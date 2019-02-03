@@ -1,0 +1,378 @@
+/* GENERAL BODY */
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+
+/* //OPENING SCENE */
+#moon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: 15px 15px 0 0 red;
+}
+/*moon via omid raouli from https://css-tricks.com/the-shapes-of-css/ */
+/* //FLOOR SCENE */
+.ground {
+  width: 100vw;
+  height: 100vh;
+  background-color: brown;
+}
+
+.foliage {
+  /* display: grid;
+  grid-template-columns: repeat (10, 1fr);
+  grid-template-rows: repeat (10, 1fr); */
+  position: absolute;
+}
+
+.leaf {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background-position: -100px -160px;
+}
+
+/* #leaf-one {
+  grid-column-start: 1;
+  grid-row-start: 1;
+}
+
+#leaf-two {
+  grid-column-start: 7;
+  grid-row-start: 7;
+}
+
+#leaf-three {
+  grid-column-start: 5;
+  grid-row-start: 5;
+}
+
+#leaf-four {
+  grid-column-end: 10;
+  grid-row-end: 9;
+} */
+.rock {
+  position: absolute;
+  width: 50px;
+  height: 70px;
+  background-position: -100px -160px;
+}
+/* //GEMS SCENE */
+
+/* tonote: css shapes of diamond and cut stones come via Joseph Silber and
+    Alexander Futekov (respectively), and can be found at https://css-tricks.com/the-shapes-of-css/. */
+#cut-diamond {
+  border-style: solid;
+  border-color: transparent transparent red transparent;
+  border-width: 0 25px 25px 25px;
+  height: 0;
+  width: 50px;
+  box-sizing: content-box;
+  position: relative;
+  margin: 20px 0 50px 0;
+}
+#cut-diamond:after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  left: -25px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: red transparent transparent transparent;
+  border-width: 70px 50px 0 50px;
+}
+
+#diamond-narrow {
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-bottom: 70px solid red;
+  position: relative;
+  top: -50px;
+}
+#diamond-narrow:after {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 70px;
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-top: 70px solid red;
+}
+.gem {
+}
+#rose-quartz {
+}
+
+#danburite {
+}
+
+#pink-topaz {
+}
+
+#kunzite {
+}
+
+#pink-agate {
+}
+
+#carnelian {
+}
+
+#red-jasper {
+}
+
+#garnet {
+}
+
+#ruby {
+}
+
+#sunstone {
+}
+
+#red-aventurine {
+}
+
+#orange-calcite {
+}
+
+#citrine {
+}
+
+#amber {
+}
+
+#septarian {
+}
+
+#yellow-topaz {
+}
+
+#yellow-aventurine {
+}
+
+#sulfur {
+}
+
+#iron-pyrite {
+}
+
+#malachite {
+}
+
+#green-aventurine {
+}
+
+#rainbow-obsidian {
+}
+
+#moss-agate {
+}
+
+#green-flourite {
+}
+
+#bloodstone {
+}
+
+#gaia-stone {
+}
+
+#chrysoprase {
+}
+
+#emerald {
+}
+#howlite {
+}
+
+#green-calcite {
+}
+
+#jade {
+}
+
+#peridot {
+}
+
+#moldavite {
+}
+
+#fuschite {
+}
+
+#amazonite {
+}
+
+#apatite {
+}
+
+#aquamarine {
+}
+
+#turquoise {
+}
+
+#chrysocolla {
+}
+
+#smithsonite {
+}
+
+#azurite {
+}
+
+#aura-quartz {
+}
+
+#blue-calcite {
+}
+
+#angelite {
+}
+
+#celestite {
+}
+
+#blue-chalcedony {
+}
+
+#blue-lace-agate {
+}
+
+#sapphire {
+}
+
+#larimar {
+}
+
+#lapis-lazuli {
+}
+
+#sodalite {
+}
+
+#amethyst {
+}
+
+#smoky-amethyst {
+}
+
+#lithium-quartz {
+}
+
+#fluorite {
+}
+
+#lepidolite {
+}
+
+#smoky-quartz {
+}
+
+#smoky-herkimer {
+}
+
+#argonite {
+}
+
+#agate {
+}
+
+#desert-rose {
+}
+
+#lodestone {
+}
+
+#serpentine {
+}
+
+#tigers-eye {
+}
+
+#mookaite {
+}
+
+#shungite {
+}
+
+#tourmaline {
+}
+
+#black-spinnel {
+}
+
+#obsidian {
+}
+
+#snowflake-obsidian {
+}
+
+#dalmation-jasper {
+}
+
+#tektite {
+}
+
+#hawks-eye {
+}
+
+#onyx {
+}
+
+#black-opal {
+}
+
+#galena {
+}
+
+#labradorite {
+}
+
+#pumice {
+}
+
+#quartz {
+}
+
+#spirit-quartz {
+}
+
+#phantom-quartz {
+}
+
+#chalcedony {
+}
+
+#selenite {
+}
+
+#abalone-shell {
+}
+
+#moonstone {
+}
+
+#rainbow-moonstone {
+}
+
+#opal {
+}
+
+#diamond {
+}
+
+#clearTopaz {
+}
+/* //TAROT SCENE */
+
+/* // LOSING SCENE */
+.wait-gypsy {
+}
