@@ -379,7 +379,7 @@ body {
 }
 
 #emerald {
-  background: #fce76f;
+  background: #007318;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -388,7 +388,7 @@ body {
 }
 
 #howlite {
-  background: #fce76f;
+  background: white;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -406,7 +406,7 @@ body {
 }
 
 #jade {
-  background: #fce76f;
+  background: #78ff5e;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -415,7 +415,7 @@ body {
 }
 
 #peridot {
-  background: #fce76f;
+  background: #b7ff18;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -424,7 +424,7 @@ body {
 }
 
 #moldavite {
-  background: #fce76f;
+  background: #28361f;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -433,7 +433,7 @@ body {
 }
 
 #fuschite {
-  background: #fce76f;
+  background: #8fbf70;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -442,7 +442,7 @@ body {
 }
 
 #amazonite {
-  background: #fce76f;
+  background: #67bfac;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -451,7 +451,7 @@ body {
 }
 
 #apatite {
-  background: #fce76f;
+  background: #1d3536;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -460,7 +460,7 @@ body {
 }
 
 #aquamarine {
-  background: #fce76f;
+  background: #67bcbf;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -469,7 +469,7 @@ body {
 }
 
 #turquoise {
-  background: #fce76f;
+  background: #29cedd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -478,7 +478,7 @@ body {
 }
 
 #chrysocolla {
-  background: #fce76f;
+  background: #03a7dd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -487,7 +487,7 @@ body {
 }
 
 #smithsonite {
-  background: #fce76f;
+  background: #6ebbdd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -496,7 +496,7 @@ body {
 }
 
 #azurite {
-  background: #fce76f;
+  background: #051036;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -505,7 +505,43 @@ body {
 }
 
 #aura-quartz {
-  background: #fce76f;
+  background: red; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(
+    left,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  ); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(
+    right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  ); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(
+    right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  ); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(
+    to right,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    violet
+  ); /* Standard syntax (must be last) */
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -514,7 +550,7 @@ body {
 }
 
 #blue-calcite {
-  background: #fce76f;
+  background: #85abdd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -523,7 +559,7 @@ body {
 }
 
 #angelite {
-  background: #fce76f;
+  background: #72a5dd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -532,7 +568,7 @@ body {
 }
 
 #celestite {
-  background: #fce76f;
+  background: #5476b2;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -541,7 +577,16 @@ body {
 }
 
 #blue-chalcedony {
-  background: #fce76f;
+  background: #ab9ab2;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
+}
+
+#blue-aventurine {
+  background: #172136;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -550,7 +595,7 @@ body {
 }
 
 #blue-lace-agate {
-  background: #fce76f;
+  background: #6e9fdd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -559,7 +604,7 @@ body {
 }
 
 #sapphire {
-  background: #fce76f;
+  background: #3e69dd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -568,7 +613,7 @@ body {
 }
 
 #larimar {
-  background: #fce76f;
+  background: #1b85dd;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -577,7 +622,7 @@ body {
 }
 
 #lapis-lazuli {
-  background: #fce76f;
+  background: #0c10b2;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -586,7 +631,7 @@ body {
 }
 
 #sodalite {
-  background: #fce76f;
+  background: #010c36;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -595,7 +640,7 @@ body {
 }
 
 #amethyst {
-  background: #fce76f;
+  background: #5825b2;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -604,7 +649,7 @@ body {
 }
 
 #smoky-amethyst {
-  background: #fce76f;
+  background: #1a0b36;
   height: 20px;
   text-align: center;
   transform: rotate(45deg);
@@ -613,36 +658,102 @@ body {
 }
 
 #lithium-quartz {
+  background: #867eb2;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #fluorite {
+  background: #bc98dd;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #lepidolite {
+  background: #d3a7dd;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #smoky-quartz {
+  background: #b2996b;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #smoky-herkimer {
+  background: #b2727a;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #argonite {
+  background: #b2727a;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #agate {
+  background: #b2401b;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #desert-rose {
+  background: #b2401b;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #lodestone {
+  background: #aea4b2;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #serpentine {
+  background: #99867c;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #tigers-eye {
+  background: #994805;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #mookaite {
@@ -655,75 +766,219 @@ body {
 }
 
 #shungite {
+  background: #343436;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #tourmaline {
+  background: #202021;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #black-spinnel {
+  background: #202021;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #obsidian {
+  background: #202021;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #snowflake-obsidian {
+  background: #adaeb2;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #dalmation-jasper {
+  background: #adaeb2;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #tektite {
+  background: #403a3d;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #hawks-eye {
+  background: #403a3d;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #onyx {
+  background: black;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #black-opal {
+  background: black;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #galena {
+  background: #3f393c;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #labradorite {
+  background: #373f37;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #pumice {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #quartz {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #spirit-quartz {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #phantom-quartz {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #chalcedony {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #selenite {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #abalone-shell {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #moonstone {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #rainbow-moonstone {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #opal {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #diamond {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #clearTopaz {
+  background: #1a0b36;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 /* //TAROT SCENE */
 

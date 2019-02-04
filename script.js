@@ -267,73 +267,326 @@ createGemObject(
 
 createGemObject(
   "emerald",
-  "iron-pyrite",
+  "emerald",
   "green",
-  "positive outlook, seeing beyond the physical"
+  "the talisman of magicians, enchantments"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "howlite",
+  "howlite",
+  "white",
+  "receiving wisdom, dreams, attunement"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "greenCalcite",
+  "green-calcite",
+  "green",
+  "fertility and abundance"
+);
+
+createGemObject("jade", "jade", "green", "purity, serenity, nurturing");
+
+createGemObject(
+  "peridot",
+  "peridot",
+  "green",
+  "detaching from negative influences to acheive fullness of destiny"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "moldavite",
+  "moldavite",
+  "green",
+  "cosmic energies, releasing fixed ideas"
+);
+
+createGemObject("fuschite", "fuschite", "green", "speeding healing process");
+
+createGemObject(
+  "amazonite",
+  "amazonite",
+  "blue",
+  "balancing two sides of an argument"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "apatite",
+  "apatite",
+  "blue",
+  "manifestation attuned to the future, connection to past lives"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "aquamarine",
+  "aquamarine",
+  "blue",
+  "dynamic change, guarding against figurative and literal drowning"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "turquoise",
+  "turquoise",
+  "blue",
+  "bridging earth and heaven, communicaiton between worlds"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "chrysocolla",
+  "chrysocolla",
+  "blue",
+  "speaking truth and balancing the home"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "smithsonite",
+  "smithsonite",
+  "blue",
+  "healing the inner child"
 );
 
 createGemObject(
-  "ironPyrite",
-  "iron-pyrite",
-  "yellow",
-  "positive outlook, seeing beyond the physical"
+  "azurite",
+  "azurite",
+  "blue",
+  "psychic developement, metaphysical energies"
 );
 
-console.log(gemObjs[2].stone);
+createGemObject(
+  "auraQuartz",
+  "aura-quartz",
+  "blue",
+  "working towards powerful goals"
+);
+
+createGemObject(
+  "blueCalcite",
+  "blue-calcite",
+  "blue",
+  "heals and restores personal energies, soothes anxieties"
+);
+
+createGemObject(
+  "angelite",
+  "angelite",
+  "blue",
+  "peace, brotherhood, and angelic presences"
+);
+
+createGemObject(
+  "celestite",
+  "celestite",
+  "blue",
+  "spiritual developement, metaphysical powers and energies"
+);
+
+createGemObject(
+  "blueChalcedony",
+  "blue-chalcedony",
+  "blue",
+  "weather and pressure changes"
+);
+
+createGemObject(
+  "blueAventurine",
+  "blue-aventurine",
+  "blue",
+  "masculine energy"
+);
+
+createGemObject(
+  "blueLaceAgate",
+  "blue-lace-agate",
+  "blue",
+  "counteracting fears of rejection"
+);
+
+createGemObject(
+  "sapphire",
+  "sapphire",
+  "blue",
+  "resists imprisonment, helpful in legal matters"
+);
+
+createGemObject(
+  "larimar",
+  "larimar",
+  "blue",
+  "soothing and calm, like dolphins in the sea"
+);
+
+createGemObject(
+  "lapisLazuli",
+  "lapis-lazuli",
+  "blue",
+  "transportation, travel, public speaking, and thought amplification. The royal stone."
+);
+
+createGemObject(
+  "sodalite",
+  "sodalite",
+  "blue",
+  "higher mind, integrity, urge toward idealism"
+);
+createGemObject(
+  "lithiumQuartz",
+  "lithium-quartz",
+  "purple",
+  "natural antidepressant, combats roots of mental and emotional disease"
+);
+createGemObject(
+  "amethyst",
+  "amethyst",
+  "purple",
+  "the sobriety stone, a natural tranquilizer and cleanser"
+);
+createGemObject(
+  "smokyAmethyst",
+  "smoky-amethyst",
+  "purple",
+  "grounds spiritual energy, reaching highest potentials"
+);
+createGemObject(
+  "smokyHerkimer",
+  "smoky-herkimer",
+  "brown",
+  "soul-shielding, emphasizing meditation"
+);
+createGemObject(
+  "argonite",
+  "argonite",
+  "brown",
+  "overcoming stress and anxiety"
+);
+createGemObject(
+  "fluorite",
+  "fluorite",
+  "purple",
+  "strength, overcoming disorganization"
+);
+createGemObject(
+  "lepidolite",
+  "lepidolite",
+  "purple",
+  "the stone of transition, brings about reconciliation and forward progress"
+);
+createGemObject(
+  "smokyQuartz",
+  "smoky-quartz",
+  "brown",
+  "efficiency, concentration, acceptance of the uncontrolables"
+);
+createGemObject(
+  "agate",
+  "agate",
+  "brown",
+  "bringing information to light, balancing yin and yang"
+);
+createGemObject(
+  "desertRose",
+  "desert-rose",
+  "brown",
+  "sacred moments, helping with secrets or hiding"
+);
+createGemObject(
+  "lodestone",
+  "lodestone",
+  "brown",
+  "earth healing and flow of energy, magnetic forces"
+);
+createGemObject(
+  "serpentine",
+  "serpentine",
+  "brown",
+  "aiding meditation and understanding the spiritual basis of life"
+);
+
+createGemObject(
+  "tigersEye",
+  "tigers-eye",
+  "brown",
+  "heals self-worth, self-criticism, and blocked creativity"
+);
+createGemObject(
+  "shungite",
+  "shungite",
+  "black",
+  "restores your connection to the ancient earth"
+);
+createGemObject(
+  "tourmaline",
+  "tourmaline",
+  "black",
+  "dense energy protection against negative forces and self-doubts, promoting laid-back attitudes"
+);
+createGemObject(
+  "blackSpinnel",
+  "black-spinnel",
+  "black",
+  "offering insight to material problems"
+);
+createGemObject(
+  "obsidian",
+  "obsidian",
+  "black",
+  "divination, exposing flaws, protecting against untruths"
+);
+createGemObject(
+  "snowflakeObsidian",
+  "snowflake-obsidian",
+  "black",
+  "the stone of purity, empowerment from isolation"
+);
+
+createGemObject(
+  "dalmationJasper",
+  "dalmation-jasper",
+  "black",
+  "promting relationship ties, family and loyalty, calming for children and animals"
+);
+createGemObject(
+  "tektite",
+  "tektite",
+  "black",
+  "a fertility talisman, seeing into other planes"
+);
+createGemObject(
+  "hawksEye",
+  "hawks-eye",
+  "black",
+  "clairvoyance, surfacing blocked emotions"
+);
+createGemObject(
+  "onyx",
+  "onyx",
+  "black",
+  "protection in dark nights and lonely places"
+);
+createGemObject("black-opal", "black-opal", "black", "ritual magic");
+createGemObject(
+  "galena",
+  "galena",
+  "black",
+  "holistic healing and harmonizing"
+);
+createGemObject(
+  "labradorite",
+  "labradorite",
+  "black",
+  "seeing into other worlds, preventing energy leakage"
+);
+createGemObject("pumice", "pumice", "black", "");
+createGemObject("quartz", "quartz", "white", "a");
+createGemObject("spiritAuartz", "spirit-quartz", "white", "");
+createGemObject("phantomQuartz", "phantom-quartz", "white", "");
+createGemObject("chalcedony", "chalcedony", "white", "");
+createGemObject("selenite", "selenite", "white", "");
+createGemObject("abaloneShell", "abalone-shell", "white", "");
+createGemObject("moonstone", "moonstone", "white", "");
+createGemObject("opal", "opal", "white", "");
+createGemObject("diamond", "diamond", "white", "");
+createGemObject("clearTopaz", "clearTopaz", "white", "");
+
+console.log(gemObjs.length);
 gemObjs.forEach(el => placeGems(el));
