@@ -3,6 +3,7 @@ const floor = document.querySelector(".floor");
 const rocks = document.querySelector(".rock");
 const leaves = document.querySelector(".leaf");
 const gems = document.querySelector(".gem");
+const gypsy = document.querySelector("#gypsy-picture");
 const text = document.querySelector(".text");
 const gemNameText = document.createElement("h2");
 gemNameText.innerText = ``;
@@ -24,7 +25,7 @@ const countDownTimer = setInterval(function() {
     clearInterval(countDownTimer);
   }
   if (countDown > 0) {
-    createTimer.innertext = `Timer: ${countdown}`;
+    createTimer.innertext = `Timer: ${countDown}`;
   }
   countDown--;
 }, 1000);
@@ -659,7 +660,13 @@ createGemObject("clearTopaz", "clearTopaz", "white", "");
 console.log(gemObjs.length);
 gemObjs.forEach(el => placeGems(el));
 
-document.querySelector("#gypsy-picture");
+const gypsyTurnsRed = () => {
+  setTimeout(function() {
+    document.querySelector(".wait-gypsy").classList.toggle("changed");
+    console.log(this);
+  }, 500);
+};
+gypsy.addEventListener("click", gypsyTurnsRed);
 
 //ADDING LOGIC FOR THE TAROT CARD GAME
 

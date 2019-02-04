@@ -1033,7 +1033,7 @@ body {
   margin: 0;
 }
 
-#gypsy-picture #changed {
-  -webkit-filter: hue-rotate(180deg);
-  filter: hue-rotate(180deg);
+.wait-gypsy .changed img {
+  -webkit-filter: sepia(90%) hue-rotate(180deg);
+  filter: sepia(90%) hue-rotate(180deg);
 }
