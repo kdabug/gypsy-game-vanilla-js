@@ -71,6 +71,22 @@ const placeItems = (n, item, url, selector, id) => {
   }
 };
 
+//turns Gypsy Red
+const gypsyTurnsRed = () => {
+  setTimeout(function() {
+    gypsy.id = "changed";
+    console.log(gypsy.id);
+  }, 500);
+};
+
+//turns Gypsy Normal
+const gypsyTurnsNormal = () => {
+  setTimeout(function() {
+    gypsy.id = "gypsy-picture";
+    console.log(gypsy.id);
+  }, 500);
+};
+
 placeItems(
   3,
   "largeRock",
@@ -660,12 +676,8 @@ createGemObject("clearTopaz", "clearTopaz", "white", "");
 console.log(gemObjs.length);
 gemObjs.forEach(el => placeGems(el));
 
-const gypsyTurnsRed = () => {
-  setTimeout(function() {
-    document.querySelector(".wait-gypsy").classList.toggle("changed");
-    console.log(this);
-  }, 500);
-};
+//
+
 gypsy.addEventListener("click", gypsyTurnsRed);
 
 //ADDING LOGIC FOR THE TAROT CARD GAME
