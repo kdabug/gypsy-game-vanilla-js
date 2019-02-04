@@ -1,5 +1,6 @@
 const body = document.querySelector("body");
 const floor = document.querySelector(".floor");
+const ground = document.querySelector(".ground");
 const rocks = document.querySelector(".rock");
 const leaves = document.querySelector(".leaf");
 const gems = document.querySelector(".gem");
@@ -676,7 +677,24 @@ createGemObject("clearTopaz", "clearTopaz", "white", "");
 console.log(gemObjs.length);
 gemObjs.forEach(el => placeGems(el));
 
-//
+//Play Game
+
+const groundPlayPickUp = () => {
+  ground.style.display = "show";
+  countDownTimer();
+};
+
+const playGame = () => {
+  //starting scene
+
+  //groundscene
+  groundPlayPickUp();
+  //outcomes scene
+
+  //final scene - cut to beginning
+};
+
+playGame();
 
 gypsy.addEventListener("click", gypsyTurnsRed);
 
