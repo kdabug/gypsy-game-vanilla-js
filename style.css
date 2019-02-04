@@ -4,6 +4,7 @@ body {
   height: 100vh;
   width: 100vw;
   background-color: white;
+  margin: 0;
 }
 
 /* //OPENING SCENE */
@@ -18,55 +19,42 @@ body {
 .ground {
   width: 100vw;
   height: 100vh;
-  background-color: brown;
+  background-color: #8b4513;
+  z-index: -1;
 }
 
 .foliage {
-  /* display: grid;
-  grid-template-columns: repeat (10, 1fr);
-  grid-template-rows: repeat (10, 1fr); */
   position: absolute;
 }
 
 .leaf {
   position: absolute;
-  width: 50px;
-  height: 70px;
-  background-position: -100px -160px;
 }
 
-/* #leaf-one {
-  grid-column-start: 1;
-  grid-row-start: 1;
+.leaf img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
 }
 
-#leaf-two {
-  grid-column-start: 7;
-  grid-row-start: 7;
-}
-
-#leaf-three {
-  grid-column-start: 5;
-  grid-row-start: 5;
-}
-
-#leaf-four {
-  grid-column-end: 10;
-  grid-row-end: 9;
-} */
 .rock {
   position: absolute;
-  width: 50px;
-  height: 70px;
-  background-position: -100px -160px;
+}
+
+.rock img {
+  width: 100px;
+  height: 100px;
+  position: absolute;
 }
 /* //GEMS SCENE */
 
-/* tonote: css shapes of diamond and cut stones come via Joseph Silber and
-    Alexander Futekov (respectively), and can be found at https://css-tricks.com/the-shapes-of-css/. */
+/* tonote: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
+
+.gem {
+}
 #cut-diamond {
   border-style: solid;
-  border-color: transparent transparent red transparent;
+  border-color: transparent transparent black transparent;
   border-width: 0 25px 25px 25px;
   height: 0;
   width: 50px;
@@ -82,46 +70,86 @@ body {
   width: 0;
   height: 0;
   border-style: solid;
-  border-color: red transparent transparent transparent;
+  border-color: black transparent transparent transparent;
   border-width: 70px 50px 0 50px;
 }
+#oval {
+  width: 200px;
+  height: 100px;
+  background: red;
+  border-radius: 100px / 50px;
+}
 
-#diamond-narrow {
-  width: 0;
-  height: 0;
-  border: 50px solid transparent;
-  border-bottom: 70px solid red;
-  position: relative;
-  top: -50px;
+#parallelogram {
+  width: 100px;
+  height: 50px;
+  transform: skew(20deg);
+  background: red;
 }
-#diamond-narrow:after {
-  content: "";
+
+#diamond {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
   position: absolute;
-  left: -50px;
-  top: 70px;
-  width: 0;
-  height: 0;
-  border: 50px solid transparent;
-  border-top: 70px solid red;
 }
-.gem {
-}
+
+/* THE GEMS */
+
 #rose-quartz {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #danburite {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #pink-topaz {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #kunzite {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #pink-agate {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #carnelian {
+  background: pink;
+  height: 20px;
+  text-align: center;
+  transform: rotate(45deg);
+  width: 20px;
+  position: absolute;
 }
 
 #red-jasper {
