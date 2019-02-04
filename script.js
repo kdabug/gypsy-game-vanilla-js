@@ -4,39 +4,91 @@ const ground = document.querySelector(".ground");
 const rocks = document.querySelector(".rock");
 const leaves = document.querySelector(".leaf");
 const gems = document.querySelector(".gem");
-const gypsy = document.querySelector("#gypsy-picture");
+const gypsy = document.querySelector(".wait-gypsy");
 const text = document.querySelector(".text");
+
+//logic for gems and gem counter
 const gemNameText = document.createElement("h2");
 gemNameText.innerText = ``;
 text.appendChild(gemNameText);
-const gemObjs = [];
-const resetGems = () => {
-  gemObjs = [];
-};
-const returnedGemObjs = [];
+const addGemCounter = document.createElement("h2");
+addGemCounter.innerText = "Gems: 0";
+timer.appendChild(addGemCounter);
 
 //TIMER AND COUNTDOWN
 const timer = document.querySelector(".timer");
 const createTimer = document.createElement("h2");
 createTimer.innerText = "";
 timer.appendChild(createTimer);
+
+//Starting Conditions
+let gemObjs = [];
+let returnedGemObjs = [];
+let gemCount = 0;
 let countDown = 20;
+let lowestScore = 15;
+
+//////FUNCTIONS
+
+// countDownTimer takes countDown and starts a countdown timer
+//turns Gypsy Red
+
+const restartButton = element => {
+  const createRestart = document.createElement("button");
+  createRestart.innerText = "";
+  createRestart.id = "restart-button";
+  createRestart.innerText = "Restart";
+  element.appendChild(createRestart);
+  createRestart.addEventListener("click", function() {
+    document.location.reload();
+  });
+};
+const gypsyTurnsRed = () => {
+  setTimeout(function() {
+    gypsy.id = "changed";
+    console.log(gypsy.id);
+  }, 500);
+  const meanGypsyText = document.createElement("h2");
+  meanGypsyText.innerText =
+    "STOP THIEF! /n POLICE!! THIS TRAVELER IS STEALING MY PRECIOUS GEMS!";
+  gypsy.appendChild("text");
+  setTimeout(function() {
+    meanGypsyText.innerText = "";
+    restartButton(gypsy);
+    setTimeout(function() {
+      document.location.reload();
+    } 10000);
+  }, 2000);
+};
+
+//turns Gypsy Normal
+const gypsyTurnsNormal = () => {
+  setTimeout(function() {
+    gypsy.id = "gypsy-picture";
+    console.log(gypsy.id);
+  }, 500);
+};
+
+const winningPicks = () => {
+  
+};
+
 const countDownTimer = setInterval(function() {
   if (countDown <= 0) {
     clearInterval(countDownTimer);
+    alert(`You collected ${gemCount} gems.`);
+    ground.style.display = "none";
+    if (gemCount >= lowestScore) {
+      winningPicks();
+    } else {
+      gypsyTurnsRed();
+    }
   }
   if (countDown > 0) {
     createTimer.innertext = `Timer: ${countDown}`;
   }
   countDown--;
 }, 1000);
-
-// GEM COUNTER
-let count = 0;
-const addGemCounter = document.createElement("h2");
-addGemCounter.innerText = "Gems: 0";
-timer.appendChild(addGemCounter);
-console.log(count);
 
 //
 const randomPosition = item => {
@@ -70,22 +122,6 @@ const placeItems = (n, item, url, selector, id) => {
     pickUpItem(item);
     selector.appendChild(newDiv);
   }
-};
-
-//turns Gypsy Red
-const gypsyTurnsRed = () => {
-  setTimeout(function() {
-    gypsy.id = "changed";
-    console.log(gypsy.id);
-  }, 500);
-};
-
-//turns Gypsy Normal
-const gypsyTurnsNormal = () => {
-  setTimeout(function() {
-    gypsy.id = "gypsy-picture";
-    console.log(gypsy.id);
-  }, 500);
 };
 
 placeItems(

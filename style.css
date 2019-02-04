@@ -1026,15 +1026,25 @@ body {
 .wait-gypsy {
   margin: 0;
   height: 100vh;
+  font-family: 'Dancing Script', cursive;
+  font-size
+}
+
+.wait-gypsy text{
+  color: black;
+  background: rgba(50, 50, 50, 0.2);
+  border: 2px solid black;
 }
 
 #gypsy-picture {
   height: 100vh;
   margin: 0;
+  z-index: -1;
 }
 
 #changed {
   filter: sepia(100%) hue-rotate(280deg);
   -webkit-filter: sepia(100%) hue-rotate(280deg);
   height: 100vh;
+  z-index: -1;
 }
