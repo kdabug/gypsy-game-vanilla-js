@@ -52,6 +52,24 @@ body {
 
 .gem {
 }
+.timer {
+  position: fixed;
+  background: transparent;
+  bottom: 0;
+  right: 0;
+  border: solid 2px purple;
+  height: 10vh;
+  width: 10vw;
+}
+.text {
+  position: fixed;
+  background: transparent;
+  top: 0;
+  right: 0;
+  border: solid 2px purple;
+  height: 10vh;
+  width: 30vw;
+}
 #cut-diamond {
   border-style: solid;
   border-color: transparent transparent black transparent;
@@ -980,6 +998,7 @@ body {
   width: 20px;
   position: absolute;
 }
+
 /* //TAROT SCENE */
 
 /* // LOSING SCENE */
