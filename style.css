@@ -1,23 +1,118 @@
 /* GENERAL BODY */
 /* font-family: 'Dancing Script', cursive;
-font-family: 'M PLUS 1p', sans-serif; */
+font-family: 'M PLUS 1p', sans-serif; 
+font-family: 'Seaweed Script', cursive;*/
 
 body {
   height: 100vh;
   width: 100vw;
   background-color: white;
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
+}
+
+button {
+  border: 2px solid purple;
+  height: 30px;
+  width: 50px;
+  font-family: "M PLUS 1p", sans-serif;
+  display: block;
 }
 
 /* //OPENING SCENE */
 .opening-page {
-  background-color: lightblue;
+  background-image: url("./images/forest_background_leafless_trees_icons_cartoon_design_6829779.jpg");
+  background-size: cover;
   height: 100vh;
   width: 100vw;
   z-index: -2;
+  font-family: "Seaweed Script", cursive;
+  margin: 0px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
 
-.path {
+.title {
+  font-size: 50px;
+  padding: 70px;
+  background: transparent;
+  margin: 0px;
+  top: 15%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.title button {
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  color: rgb(226, 27, 27);
+  font-size: 20px;
+  border: rgb(153, 106, 106) solid 2px;
+  border-radius: 20%;
+  height: 35px;
+  width: 100px;
+}
+
+.title h1 {
+  margin: 0;
+  padding: 0;
+  align-content: center;
+  animation-name: main;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes main {
+  0% {
+    color: rgb(248, 232, 9);
+  }
+  50% {
+    color: rgb(238, 133, 14);
+  }
+  75% {
+    color: rgb(236, 22, 6);
+  }
+  100% {
+    color: rgb(10, 9, 9);
+  }
+}
+
+.openingGypsy {
+  background-image: url("./images/oldwomancartoon.png");
+  background-size: cover;
+  height: 30%;
+  width: 15%;
+  position: absolute;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  animation: moving-gypsy;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes moving-gypsy {
+  0% {
+    bottom: 0;
+    left: -5%;
+  }
+  10% {
+    bottom: 0;
+    left: 2%;
+  }
+  50% {
+    bottom: 0;
+    left: 12%;
+  }
+  100% {
+    bottom: 0;
+    left: 25%;
+  }
+}
+/* .path {
   background-color: rgb(82, 59, 10);
   bottom: 0;
   position: fixed;
@@ -27,15 +122,49 @@ body {
 
 .sun {
   background-image: url("./images/sun-and-clouds.png");
+  background: cover;
+  width: 100%;
+  height: 100%;
+  top: 10px;
+  left: 10px;
+  position: absolute;
 }
 
+.sun img {
+  object-fit: cover;
+}
+
+.bush {
+}
+
+.bush.bushOne {
+  background-image: url("./images/bush1.png");
+  background-size: cover;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  left: 200px;
+  top: 200px;
+  z-index: 1;
+}
+.bush.bushTwo {
+  background-image: url("./images/bush3.png");
+  background-size: cover;
+  width: 400px;
+  height: 200px;
+  position: absolute;
+  left: 400px;
+  bottom: 0;
+  z-index: 1;
+} */
 /* https://stackoverflow.com/questions/18012420/draw-diagonal-lines-in-div-background-with-css */
-.tree.circle {
+/* .tree.circle {
   position: absolute;
   background-color: green;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  z-index: 1;
 }
 
 .tree.triangle {
@@ -44,10 +173,15 @@ body {
   border-left: 200px solid transparent;
   border-right: 200px solid transparent;
   border-bottom: 400px solid green;
-}
+} */
 
 /*moon via omid raouli from https://css-tricks.com/the-shapes-of-css/ */
 /* //FLOOR SCENE */
+.floor-scene {
+  background: white;
+  display: none;
+}
+
 .ground {
   display: show;
   width: 100vw;
@@ -120,13 +254,6 @@ body {
   color: black;
   font-size: 18px;
   z-index: 1;
-}
-
-button {
-  border: 2px solid purple;
-  height: 30px;
-  width: 50px;
-  font-family: "M PLUS 1p", sans-serif;
 }
 
 #cut-diamond {

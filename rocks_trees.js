@@ -3,7 +3,7 @@ const leaves = document.querySelector(".leaf");
 let foliageItems = [];
 
 const createFoliageObject = (number, url, selector, className) => {
-  foliage.push({
+  foliageItems.push({
     number,
     url,
     selector,

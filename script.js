@@ -1,13 +1,22 @@
 const body = document.querySelector("body");
-const floor = document.querySelector(".floor");
+const floor = document.querySelector(".floor-scene");
 const ground = document.querySelector(".ground");
-const rocks = document.querySelector(".rock");
-const leaves = document.querySelector(".leaf");
+// const rocks = document.querySelector(".rock");
+// const leaves = document.querySelector(".leaf");
 const gems = document.querySelector(".gem");
 const gypsy = document.querySelector(".wait-gypsy");
 const instructions = document.querySelector(".instructions");
 
-//creating gem counter
+//Starting Conditions
+let returnedGemObjs = [];
+let gemCount = 0;
+let countDown = 20;
+let lowestScore = 15;
+let lastPickedNumber = -1;
+let firstPickedNumber = -1;
+let secondPickedNumber = -1;
+
+//create gem counter
 const gemNameText = document.createElement("h2");
 gemNameText.innerText = ``;
 instructions.appendChild(gemNameText);
@@ -42,18 +51,9 @@ const createNumberForm = place => {
   gypsy.appendChild(askForANumber);
 };
 
-//Starting Conditions
-let returnedGemObjs = [];
-let gemCount = 0;
-let countDown = 20;
-let lowestScore = 15;
-let lastPickedNumber = -1;
-let firstPickedNumber = -1;
-let secondPickedNumber = -1;
-
 //////FUNCTIONS
 
-//turns Gypsy Red
+//turns Gypsy Red - LOSING sequence
 const gypsyTurnsRed = () => {
   gypsy.id = "changed";
   const meanGypsyText = document.createElement("h2");
@@ -69,34 +69,37 @@ const gypsyTurnsRed = () => {
   }, 2000);
 };
 
-//helper function for winningPicks to ask the player to choose again
+//helper function for winningPicks
+//to ask the player to choose again
 const chooseAgain = () => {
   winningText.innerText = `Please pick a number between 1 and ${
     returnedGemObjs.length
   }`;
-}
-
-
-//helper function for winningPicks to compare numbers chosen
-const checkDifferentNumbers = (picked, diff1, diff2) => {
-  if (picked !== diff1 &&
-    picked !== diff2 &&
-    picked > 0 &&
-    picked <= returnedGemObjs.length;) {
-    return true
-    }
+  gypsy.removeChild("#form");
+  createNumberForm("new number");
 };
 
-//winning picks runs the number form input if player picks > lowestCount gems
-const winningPicks = () => {
-  const winningText = document.createElement("h1");
-  gypsy.appendChild(winningText);
-  winningText.innerText = `Thank you, kind traveler, for helping me. ... ... ... I'm feeling impressed to tell you coming thing. Can you please give me a number between 1 and ${
-    returnedGemObjs.length
-  }.`;
+//helper function for winningPicks
+//to compare numbers chosen
+const checkDifferentNumbers = (picked, diff1, diff2) => {
+  if (
+    picked !== diff1 &&
+    picked !== diff2 &&
+    picked > 0 &&
+    picked <= returnedGemObjs.length
+  ) {
+    return true;
+  }
+};
+
+//helper function for winningPicks
+//first input sequence
+const firstNumberInput = () => {
   createNumberForm("first number");
   let pickedNumber = document.querySelector("#form").value;
-  if (checkDifferentNumbers(pickedNumber, secondPickedNumber, lastPickedNumber)) {
+  if (
+    checkDifferentNumbers(pickedNumber, secondPickedNumber, lastPickedNumber)
+  ) {
     winningText.innerText = `Ahh yes. The ${
       returnedGemObjs[pickedNumber - 1].stone
     } is such a beautiful ${
@@ -109,26 +112,34 @@ const winningPicks = () => {
   } else {
     chooseAgain();
   }
-  winningText.innerText = `Now for your present. Give me a different number between 1 and ${
-    returnedGemObjs.length
-  }.`;
+};
+
+//helper function for winningPicks
+//second input sequence
+const secondNumberInput = () => {
   createNumberForm("second number");
-  if (checkDifferentNumbers(pickedNumber, firstPickedNumber, lastPickedNumber)) {
+  if (
+    checkDifferentNumbers(pickedNumber, firstPickedNumber, lastPickedNumber)
+  ) {
     winningText.innerText = `Your present speaks to the ${
       returnedGemObjs[pickedNumber - 1].color
     } ${returnedGemObjs[pickedNumber - 1].stone} signifying ${
-      returnedGemObjs[pickedNumber-1].heals
+      returnedGemObjs[pickedNumber - 1].heals
     }.`;
     secondPickedNumber = pickedNumber;
     gypsy.removeChild("#form");
   } else {
     chooseAgain();
   }
-  winningText.innerText = `Now, give me a different number between 1 and ${
-    returnedGemObjs.length
-  }.`;
+};
+
+//helper function for winningPicks
+//final input sequence
+const finalNumberInput = () => {
   createNumberForm("final number");
-  if (checkDifferentNumbers(pickedNumber, firstPickedNumber, secondPickedNumber)) {
+  if (
+    checkDifferentNumbers(pickedNumber, firstPickedNumber, secondPickedNumber)
+  ) {
     winningText.innerText = `Your futures bodes of ${
       returnedGemObjs[pickedNumber - 1].heals
     }. This requires further study of the ${
@@ -139,6 +150,24 @@ const winningPicks = () => {
   } else {
     chooseAgain();
   }
+};
+//WINNING SEQUENCE
+//winning picks asks for three numbers if player picks > lowestCount
+const winningPicks = () => {
+  const winningText = document.createElement("h1");
+  gypsy.appendChild(winningText);
+  winningText.innerText = `Thank you, kind traveler, for helping me. ... ... ... I'm feeling impressed to tell you coming thing. Can you please give me a number between 1 and ${
+    returnedGemObjs.length
+  }.`;
+  firstNumberInput();
+  winningText.innerText = `Now for your present. Give me a different number between 1 and ${
+    returnedGemObjs.length
+  }.`;
+  secondNumberInput();
+  winningText.innerText = `Now, give me a different number between 1 and ${
+    returnedGemObjs.length
+  }.`;
+  finalNumberInput();
 };
 
 // countDownTimer takes countDown and starts a countdown timer
@@ -201,7 +230,7 @@ const placeItems = array => {
   }
 };
 
-// CREATING AND PLACING THE GEMS
+//placeGems makes a new element and appends it to the gems div
 const placeGems = identify => {
   const newEl = document.createElement("div");
   newEl.id = identify;
@@ -209,6 +238,8 @@ const placeGems = identify => {
   randomPosition(newEl);
 };
 
+//pickUpGemEvent takes an element and attaches an event listener
+//that adds to counter and removes the item when it is clicked
 const pickUpGemEvent = id => {
   document.querySelector(`#${id}`).addEventListener("click", function() {
     const gemName = this.getAttribute("id");
@@ -225,9 +256,8 @@ const pickUpGemEvent = id => {
     document.querySelector(".picked").remove();
   });
 };
-//function creates and places gem objects
 
-//Play GAMW
+//helper functions for play game sequence
 const groundPlayPickUp = () => {
   ground.style.display = "show";
   gemObjs.forEach(el => placeGems(el));
@@ -243,9 +273,10 @@ const setUpGround = () => {
   placeItems(foliageItems);
 };
 
+//Play GAME
 const playGame = () => {
   //starting scene
-  
+  floor.style.display = "none";
 
   //groundscene
   console.log("I want to play the game.");
@@ -256,4 +287,4 @@ const playGame = () => {
   //final scene - cut to beginning
 };
 
-playGame();
+//playGame();
