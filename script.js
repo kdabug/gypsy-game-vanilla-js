@@ -22,7 +22,7 @@ let countDown = 20;
 let lowestScore = 15;
 let lastPickedNumber = -1;
 let firstPickedNumber = -1;
-let secondPickedNumber
+let secondPickedNumber = 0;
 
 //TIMER AND COUNTDOWN
 const timer = document.querySelector(".timer");
@@ -44,13 +44,13 @@ const restartButton = element => {
   });
 };
 
-const createNumberForm = (place) => {
+const createNumberForm = place => {
   askForANumber = document.createElement("INPUT");
   askForANumber.id = "form";
   askForANumber.setAttribute("type", "number");
   askForANumber.setAttribute("placeholder", place);
   gypsy.appendChild(askForANumber);
-}
+};
 
 //turns Gypsy Red
 const gypsyTurnsRed = () => {
@@ -74,45 +74,76 @@ const winningPicks = () => {
   winningText.innerText = `Thank you, kind traveler, for helping me. ... ... ... I'm feeling impressed to tell you coming thing. Can you please give me a number between 1 and ${
     returnedGemObjs.length
   }.`;
-  createNumberForm("first number")
-  let pickedNumber = document.querySelector('#form').value;
-  if (pickedNumber !== lastPickedNumber && pickedNumber > 0 && pickedNumber <= returnedGemObjs.length) {
-    winningText.innerText = `Ahh yes. The ${returnedGemObjs[pickedNumber-1].stone} is such a beautiful ${returnedGemObjs[pickedNumber-1].color}. It's telling me your past was filled with ${returnedGemObjs[pickedNumber-1].heals}.`;
+  createNumberForm("first number");
+  let pickedNumber = document.querySelector("#form").value;
+  if (
+    pickedNumber !== lastPickedNumber &&
+    pickedNumber > 0 &&
+    pickedNumber <= returnedGemObjs.length
+  ) {
+    winningText.innerText = `Ahh yes. The ${
+      returnedGemObjs[pickedNumber - 1].stone
+    } is such a beautiful ${
+      returnedGemObjs[pickedNumber - 1].color
+    }. It's telling me your past was filled with ${
+      returnedGemObjs[pickedNumber - 1].heals
+    }.`;
     firstPickedNumber = pickedNumber;
-    gypsy.removeChild('#form');
+    gypsy.removeChild("#form");
   } else {
-    winningText.innerText = `Please pick a number between 1 and ${returnedGemObjs.length
-  }`;
+    winningText.innerText = `Please pick a number between 1 and ${
+      returnedGemObjs.length
+    }`;
   }
   winningText.innerText = `Now for your present. Give me a different number between 1 and ${
     returnedGemObjs.length
   }.`;
   createNumberForm("second number");
-  if (pickedNumber !== firstPickedNumber && pickedNumber > 0 && pickedNumber <= returnedGemObjs.length) {
-    winningText.innerText = `Your present speaks to the ${returnedGemObjs[pickedNumber-1].color} ${returnedGemObjs[pickedNumber-1].stone} signifying ${returnedGemObjs[pickedNumber].heals}.`;
-    secondPickedNumber = pickedNumber
-    gypsy.removeChild('#form');
+  if (
+    pickedNumber !== firstPickedNumber &&
+    pickedNumber > 0 &&
+    pickedNumber <= returnedGemObjs.length
+  ) {
+    winningText.innerText = `Your present speaks to the ${
+      returnedGemObjs[pickedNumber - 1].color
+    } ${returnedGemObjs[pickedNumber - 1].stone} signifying ${
+      returnedGemObjs[pickedNumber].heals
+    }.`;
+    secondPickedNumber = pickedNumber;
+    gypsy.removeChild("#form");
   } else {
-    winningText.innerText = `Please pick a number between 1 and ${returnedGemObjs.length
-  }`;
+    winningText.innerText = `Please pick a number between 1 and ${
+      returnedGemObjs.length
+    }`;
+  }
   winningText.innerText = `Now, give me a different number between 1 and ${
     returnedGemObjs.length
   }.`;
-  createNumberForm("final number")
-  if (pickedNumber !== firstPickedNumber && pickedNumber !== secondPickedNumber && pickedNumber > 0 && pickedNumber <= returnedGemObjs.length) {
-    winningText.innerText = `Your futures bodes of ${returnedGemObjs[pickedNumber-1].heals}. This requires further study of the ${returnedGemObjs[pickedNumber-1].color} ${returnedGemObjs[pickedNumber-1].stone}.`;
-    lastPickedNumber = pickedNumber
-    gypsy.removeChild('#form');
+  createNumberForm("final number");
+  if (
+    pickedNumber !== firstPickedNumber &&
+    pickedNumber !== secondPickedNumber &&
+    pickedNumber > 0 &&
+    pickedNumber <= returnedGemObjs.length
+  ) {
+    winningText.innerText = `Your futures bodes of ${
+      returnedGemObjs[pickedNumber - 1].heals
+    }. This requires further study of the ${
+      returnedGemObjs[pickedNumber - 1].color
+    } ${returnedGemObjs[pickedNumber - 1].stone}.`;
+    lastPickedNumber = pickedNumber;
+    gypsy.removeChild("#form");
   } else {
-    winningText.innerText = `Please pick a number between 1 and ${returnedGemObjs.length
-  }`;
+    winningText.innerText = `Please pick a number between 1 and ${
+      returnedGemObjs.length
+    }`;
   }
 };
 
-
 // countDownTimer takes countDown and starts a countdown timer
 const countDownTimer = () => {
-  if (countDown < 0) {
+  if (countDown === 0) {
+    createTimer.innerText = `Timer: 0`;
     clearInterval(countDownTimer);
     alert(`You collected ${gemCount} gems.`);
     ground.style.display = "none";
@@ -122,16 +153,15 @@ const countDownTimer = () => {
       gypsyTurnsRed();
     }
   }
-  if (countDown >= 0) {
+  if (countDown > 0) {
     createTimer.innerText = `Timer: ${countDown}`;
   }
   countDown--;
-}
+};
 
 const endScene = () => {
-  gypsy.style.display = 'none';
-  
-}
+  gypsy.style.display = "none";
+};
 
 //
 const randomPosition = item => {
@@ -749,18 +779,18 @@ createGemObject("diamond", "diamond", "white", "");
 createGemObject("clearTopaz", "clearTopaz", "white", "");
 
 console.log(gemObjs.length);
-gemObjs.forEach(el => placeGems(el));
 
-//Play Game
-
+//Play GAMW
 const groundPlayPickUp = () => {
   ground.style.display = "show";
+  gemObjs.forEach(el => placeGems(el));
+  console.log("This is: ", gemObjs.length);
   setInterval(countDownTimer, 1000);
 };
 
 const playGame = () => {
   //starting scene
-
+  console.log("I want to play the game.");
   //groundscene
   groundPlayPickUp();
   //outcomes scene
@@ -769,7 +799,6 @@ const playGame = () => {
 };
 
 playGame();
-
 //ADDING LOGIC FOR THE TAROT CARD GAME
 
 const tarotDeck = [];
@@ -790,6 +819,7 @@ addToDeck(
   "major arcana",
   "new beginnings, optimism, trust in life"
 );
+
 addToDeck("the magician", 1, "major arcana", "");
 addToDeck("the high priestess", 2, "major arcana", "");
 addToDeck("the empress", 3, "major arcana", "");

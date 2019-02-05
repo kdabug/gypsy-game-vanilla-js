@@ -22,7 +22,7 @@ body {
   display: show;
   width: 100vw;
   height: 100vh;
-  background-color: #8b4513;
+  background-color: rgba(116, 79, 11, 0.774);
   z-index: -1;
 }
 
