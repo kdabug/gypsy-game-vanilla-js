@@ -163,7 +163,7 @@ const endScene = () => {
   gypsy.style.display = "none";
 };
 
-//
+//randomPosition takes and item and gives it a random position
 const randomPosition = item => {
   item.style.left = Math.random() * window.innerWidth + "px";
   item.style.top = Math.random() * window.innerHeight - 200 + "px";
@@ -190,10 +190,10 @@ const placeItems = (n, url, selector, id) => {
     item = document.createElement("img");
     item.setAttribute("src", url);
     item.classList.add(id);
-    randomPosition(item);
     newDiv.appendChild(item);
-    pickUpItem(item);
     selector.appendChild(newDiv);
+    randomPosition(item);
+    pickUpItem(item);
   }
 };
 
@@ -346,7 +346,7 @@ createGemObject(
   "orangeCalcite",
   "orange-calcite",
   "orange",
-  "energizes and cleanses"
+  "energizing and cleanses"
 );
 
 createGemObject(
@@ -363,7 +363,7 @@ createGemObject(
   "versatility, peace, wholeness"
 );
 
-createGemObject("amber", "amber", "orange", "trust, wisdom, memory, cleaning");
+createGemObject("amber", "amber", "orange", "wisdom, memory, cleaning");
 
 createGemObject(
   "septarian",
@@ -438,7 +438,7 @@ createGemObject(
   "bloodstone",
   "bloodstone",
   "green",
-  "repels unwanted energies, signals weather and recognition of chaos"
+  "repeling unwanted energies, signaling weather and recognition of chaos"
 );
 
 createGemObject(
@@ -554,7 +554,7 @@ createGemObject(
   "blueCalcite",
   "blue-calcite",
   "blue",
-  "heals and restores personal energies, soothes anxieties"
+  "healing and restoring personal energies, soothing anxieties"
 );
 
 createGemObject(
@@ -766,17 +766,62 @@ createGemObject(
   "black",
   "seeing into other worlds, preventing energy leakage"
 );
-createGemObject("pumice", "pumice", "black", "");
-createGemObject("quartz", "quartz", "white", "a");
-createGemObject("spiritAuartz", "spirit-quartz", "white", "");
-createGemObject("phantomQuartz", "phantom-quartz", "white", "");
-createGemObject("chalcedony", "chalcedony", "white", "");
-createGemObject("selenite", "selenite", "white", "");
-createGemObject("abaloneShell", "abalone-shell", "white", "");
-createGemObject("moonstone", "moonstone", "white", "");
-createGemObject("opal", "opal", "white", "");
-createGemObject("diamond", "diamond", "white", "");
-createGemObject("clearTopaz", "clearTopaz", "white", "");
+createGemObject(
+  "pumice",
+  "pumice",
+  "black",
+  "helping you see solutions in difficult situations"
+);
+createGemObject(
+  "quartz",
+  "quartz",
+  "white",
+  "cleansing, clarity of thought, bringing in rich and new energies"
+);
+createGemObject(
+  "spiritQuartz",
+  "spirit-quartz",
+  "white",
+  "bathing in the combined radiance of a whole being and spiritual growth"
+);
+createGemObject(
+  "phantomQuartz",
+  "phantom-quartz",
+  "white",
+  "wisdom, learning and extending, a transition phase"
+);
+createGemObject("chalcedony", "chalcedony", "white", "calming and trust");
+createGemObject("selenite", "selenite", "white", "good luck and protection");
+createGemObject(
+  "abaloneShell",
+  "abalone-shell",
+  "white",
+  "getting through touch emotional issues"
+);
+createGemObject(
+  "moonstone",
+  "moonstone",
+  "white",
+  "deep and nourishing feminine energies, whole healing"
+);
+createGemObject(
+  "opal",
+  "opal",
+  "white",
+  "loyalty and faithfulness, intensifies emotional states"
+);
+createGemObject(
+  "diamond",
+  "diamond",
+  "white",
+  "strength of character and faithfulness"
+);
+createGemObject(
+  "clearTopaz",
+  "clearTopaz",
+  "white",
+  "confidence and positive intent, talisman of pyschics"
+);
 
 console.log(gemObjs.length);
 
@@ -855,13 +900,45 @@ addToDeck("page", 11, "wands", "");
 addToDeck("prince", 12, "wands", "");
 addToDeck("queen", 13, "wands", "");
 addToDeck("king", 14, "wands", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
-addToDeck("fool", 0, "swords", "");
+addToDeck("ace", 1, "swords", "");
+addToDeck("two", 2, "swords", "");
+addToDeck("three", 3, "swords", "");
+addToDeck("four", 4, "swords", "");
+addToDeck("five", 5, "swords", "");
+addToDeck("six", 6, "swords", "");
+addToDeck("seven", 7, "swords", "");
+addToDeck("eight", 8, "swords", "");
+addToDeck("nine", 9, "swords", "");
+addToDeck("ten", 10, "swords", "");
+addToDeck("page", 11, "wands", "");
+addToDeck("prince", 12, "wands", "");
+addToDeck("queen", 13, "wands", "");
+addToDeck("king", 14, "wands", "");
+addToDeck("ace", 1, "swords", "");
+addToDeck("two", 2, "swords", "");
+addToDeck("three", 3, "swords", "");
+addToDeck("four", 4, "swords", "");
+addToDeck("five", 5, "swords", "");
+addToDeck("six", 6, "swords", "");
+addToDeck("seven", 7, "swords", "");
+addToDeck("eight", 8, "swords", "");
+addToDeck("nine", 9, "swords", "");
+addToDeck("ten", 10, "swords", "");
+addToDeck("page", 11, "wands", "");
+addToDeck("prince", 12, "wands", "");
+addToDeck("queen", 13, "wands", "");
+addToDeck("king", 14, "wands", "");
+addToDeck("ace", 1, "swords", "");
+addToDeck("two", 2, "swords", "");
+addToDeck("three", 3, "swords", "");
+addToDeck("four", 4, "swords", "");
+addToDeck("five", 5, "swords", "");
+addToDeck("six", 6, "swords", "");
+addToDeck("seven", 7, "swords", "");
+addToDeck("eight", 8, "swords", "");
+addToDeck("nine", 9, "swords", "");
+addToDeck("ten", 10, "swords", "");
+addToDeck("page", 11, "wands", "");
+addToDeck("prince", 12, "wands", "");
+addToDeck("queen", 13, "wands", "");
+addToDeck("king", 14, "wands", "");
