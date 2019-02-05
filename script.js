@@ -7,31 +7,21 @@ const gems = document.querySelector(".gem");
 const gypsy = document.querySelector(".wait-gypsy");
 const instructions = document.querySelector(".instructions");
 
-//logic for gems and gem counter
+//creating gem counter
 const gemNameText = document.createElement("h2");
 gemNameText.innerText = ``;
 instructions.appendChild(gemNameText);
 const addGemCounter = document.createElement("h2");
 addGemCounter.innerText = "Gems: 0";
 
-//Starting Conditions
-let returnedGemObjs = [];
-let gemCount = 0;
-let countDown = 20;
-let lowestScore = 15;
-let lastPickedNumber = -1;
-let firstPickedNumber = -1;
-let secondPickedNumber = 0;
-
-//TIMER AND COUNTDOWN
+//create timer
 const timer = document.querySelector(".timer");
 const createTimer = document.createElement("h2");
 createTimer.innerText = `Timer: ${countDown}`;
 timer.appendChild(createTimer);
 timer.appendChild(addGemCounter);
 
-//////FUNCTIONS
-
+//create restart button
 const restartButton = element => {
   const createRestart = document.createElement("button");
   createRestart.innerText = "";
@@ -43,6 +33,7 @@ const restartButton = element => {
   });
 };
 
+//create number form
 const createNumberForm = place => {
   askForANumber = document.createElement("INPUT");
   askForANumber.id = "form";
@@ -50,6 +41,17 @@ const createNumberForm = place => {
   askForANumber.setAttribute("placeholder", place);
   gypsy.appendChild(askForANumber);
 };
+
+//Starting Conditions
+let returnedGemObjs = [];
+let gemCount = 0;
+let countDown = 20;
+let lowestScore = 15;
+let lastPickedNumber = -1;
+let firstPickedNumber = -1;
+let secondPickedNumber = -1;
+
+//////FUNCTIONS
 
 //turns Gypsy Red
 const gypsyTurnsRed = () => {
@@ -67,6 +69,25 @@ const gypsyTurnsRed = () => {
   }, 2000);
 };
 
+//helper function for winningPicks to ask the player to choose again
+const chooseAgain = () => {
+  winningText.innerText = `Please pick a number between 1 and ${
+    returnedGemObjs.length
+  }`;
+}
+
+
+//helper function for winningPicks to compare numbers chosen
+const checkDifferentNumbers = (picked, diff1, diff2) => {
+  if (picked !== diff1 &&
+    picked !== diff2 &&
+    picked > 0 &&
+    picked <= returnedGemObjs.length;) {
+    return true
+    }
+};
+
+//winning picks runs the number form input if player picks > lowestCount gems
 const winningPicks = () => {
   const winningText = document.createElement("h1");
   gypsy.appendChild(winningText);
@@ -75,11 +96,7 @@ const winningPicks = () => {
   }.`;
   createNumberForm("first number");
   let pickedNumber = document.querySelector("#form").value;
-  if (
-    pickedNumber !== lastPickedNumber &&
-    pickedNumber > 0 &&
-    pickedNumber <= returnedGemObjs.length
-  ) {
+  if (checkDifferentNumbers(pickedNumber, secondPickedNumber, lastPickedNumber)) {
     winningText.innerText = `Ahh yes. The ${
       returnedGemObjs[pickedNumber - 1].stone
     } is such a beautiful ${
@@ -90,41 +107,28 @@ const winningPicks = () => {
     firstPickedNumber = pickedNumber;
     gypsy.removeChild("#form");
   } else {
-    winningText.innerText = `Please pick a number between 1 and ${
-      returnedGemObjs.length
-    }`;
+    chooseAgain();
   }
   winningText.innerText = `Now for your present. Give me a different number between 1 and ${
     returnedGemObjs.length
   }.`;
   createNumberForm("second number");
-  if (
-    pickedNumber !== firstPickedNumber &&
-    pickedNumber > 0 &&
-    pickedNumber <= returnedGemObjs.length
-  ) {
+  if (checkDifferentNumbers(pickedNumber, firstPickedNumber, lastPickedNumber)) {
     winningText.innerText = `Your present speaks to the ${
       returnedGemObjs[pickedNumber - 1].color
     } ${returnedGemObjs[pickedNumber - 1].stone} signifying ${
-      returnedGemObjs[pickedNumber].heals
+      returnedGemObjs[pickedNumber-1].heals
     }.`;
     secondPickedNumber = pickedNumber;
     gypsy.removeChild("#form");
   } else {
-    winningText.innerText = `Please pick a number between 1 and ${
-      returnedGemObjs.length
-    }`;
+    chooseAgain();
   }
   winningText.innerText = `Now, give me a different number between 1 and ${
     returnedGemObjs.length
   }.`;
   createNumberForm("final number");
-  if (
-    pickedNumber !== firstPickedNumber &&
-    pickedNumber !== secondPickedNumber &&
-    pickedNumber > 0 &&
-    pickedNumber <= returnedGemObjs.length
-  ) {
+  if (checkDifferentNumbers(pickedNumber, firstPickedNumber, secondPickedNumber)) {
     winningText.innerText = `Your futures bodes of ${
       returnedGemObjs[pickedNumber - 1].heals
     }. This requires further study of the ${
@@ -133,13 +137,12 @@ const winningPicks = () => {
     lastPickedNumber = pickedNumber;
     gypsy.removeChild("#form");
   } else {
-    winningText.innerText = `Please pick a number between 1 and ${
-      returnedGemObjs.length
-    }`;
+    chooseAgain();
   }
 };
 
 // countDownTimer takes countDown and starts a countdown timer
+//asynchronous event that triggers other events to occurs
 const countDownTimer = () => {
   if (countDown === 0) {
     createTimer.innerText = `Timer: 0`;
@@ -168,8 +171,8 @@ const randomPosition = item => {
   item.style.top = Math.random() * window.innerHeight - 200 + "px";
 };
 
-//pickUpItem takes an id and add anevent listener to picked up items
-const pickUpItem = item => {
+//pickUpItem takes an id and add an event listener to picked up items
+const pickUpItemEvent = item => {
   item.addEventListener("click", function() {
     console.log(this);
     this.classList.add("picked");
@@ -181,59 +184,24 @@ const pickUpItem = item => {
     document.querySelector(".picked").remove();
   });
 };
-
-const placeItems = (n, url, selector, id) => {
-  for (let i = 0; i < n; i++) {
-    const newDiv = document.createElement("div");
-    item = document.createElement("img");
-    item.setAttribute("src", url);
-    item.classList.add(id);
-    newDiv.appendChild(item);
-    selector.appendChild(newDiv);
-    randomPosition(item);
-    pickUpItem(item);
+//placeItems takes an array of objects and randomly places the number of items specified in each object
+//and adds an event listener
+const placeItems = array => {
+  for (let j = 0; j < foliageItems.length; j++) {
+    for (let i = 0; i < foliageItem[i].number; i++) {
+      const newDiv = document.createElement("div");
+      item = document.createElement("img");
+      item.setAttribute("src", foliageItem[i].url);
+      item.classList.add(foliageItem[i].className);
+      newDiv.appendChild(item);
+      foliageItem[i].selector.appendChild(newDiv);
+      randomPosition(item);
+      pickUpItemEvent(item);
+    }
   }
 };
 
-placeItems(
-  3,
-  "https://images.vexels.com/media/users/3/145827/isolated/preview/357f06ecbaaa77d750259c459c0ed55f-round-rock-illustration-by-vexels.png",
-  rocks,
-  "rock"
-);
-
-placeItems(
-  3,
-  "https://images.vexels.com/media/users/3/145827/isolated/preview/357f06ecbaaa77d750259c459c0ed55f-round-rock-illustration-by-vexels.png",
-  rocks,
-  "rock"
-);
-
-placeItems(
-  4,
-  "http://res.freestockphotos.biz/pictures/16/16812-illustration-of-an-orange-autumn-leaf-pv.png",
-  leaves,
-  "leaf"
-);
-
-placeItems(
-  3,
-  "http://res.freestockphotos.biz/pictures/16/16813-illustration-of-an-orange-autumn-leaf-pv.png",
-  leaves,
-  "leaf"
-);
-
-placeItems(
-  2,
-  "http://www.lindicepensable.ch/wordpress/wp-content/uploads/2018/07/Feuille-de-vigne-avec-insecte.png",
-  leaves,
-  "leaf"
-);
-
-//creates a random position for the rocks and leaves
-
 // CREATING AND PLACING THE GEMS
-
 const placeGems = identify => {
   const newEl = document.createElement("div");
   newEl.id = identify;
@@ -241,7 +209,7 @@ const placeGems = identify => {
   randomPosition(newEl);
 };
 
-const pickUpGem = id => {
+const pickUpGemEvent = id => {
   document.querySelector(`#${id}`).addEventListener("click", function() {
     const gemName = this.getAttribute("id");
     this.classList.add("picked");
@@ -267,9 +235,19 @@ const groundPlayPickUp = () => {
   setInterval(countDownTimer, 1000);
 };
 
+const setUpGround = () => {
+  for (let i = 0; i < gemObjs.length; i++) {
+    placeGems(gemObjs[i].id);
+    pickUpGemEvent(gemObjs[i].id);
+  }
+  placeItems(foliageItems);
+};
+
 const playGame = () => {
   //starting scene
   console.log("I want to play the game.");
+  setUpGround();
+
   //groundscene
   groundPlayPickUp();
   //outcomes scene

@@ -7,8 +7,6 @@ const createGemObject = (stone, id, color, heals) => {
     color,
     heals
   });
-  placeGems(id);
-  pickUpGem(id);
 };
 
 createGemObject(
