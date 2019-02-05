@@ -161,9 +161,9 @@ const countDownTimer = () => {
   countDown--;
 };
 
-const endScene = () => {
-  gypsy.style.display = "none";
-};
+// const endScene = () => {
+//   gypsy.style.display = "none";
+// };
 
 //randomPosition takes and item and gives it a random position
 const randomPosition = item => {
@@ -245,10 +245,11 @@ const setUpGround = () => {
 
 const playGame = () => {
   //starting scene
-  console.log("I want to play the game.");
-  setUpGround();
+  
 
   //groundscene
+  console.log("I want to play the game.");
+  setUpGround();
   groundPlayPickUp();
   //outcomes scene
 
