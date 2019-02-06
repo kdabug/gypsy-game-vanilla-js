@@ -130,7 +130,7 @@ button {
   filter: sepia(100%) hue-rotate(280deg);
   -webkit-filter: sepia(100%) hue-rotate(280deg);
   bottom: 0;
-  left: 25%;
+  left: 15%;
   z-index: 2;
   animation-name: large-gypsy;
   animation-duration: 15s;
@@ -167,10 +167,15 @@ button {
   justify-content: center;
 }
 
-.hello text {
+.hello h2 {
   padding: 20px;
   align-content: center;
   justify-content: center;
+}
+
+
+.hello p {
+  font-size: 18px;
 }
 
 .hello button {
@@ -229,10 +234,15 @@ button {
   z-index: 0;
 }
 
+.ground img {
+  opacity: 0.4;
+}
+
 .foliage img {
   position: absolute;
   width: 100px;
   height: 100px;
+  opacity: 1;
 }
 
 .leaf {
@@ -256,7 +266,15 @@ button {
 }
 /* //GEMS SCENE */
 
-/* tonote: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
+
+#form{
+  display: flex;
+  position: relative;
+  bottom: 0;
+  left: 30%;
+}
+
+/* to note: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
 
 .gem {
 }
@@ -299,6 +317,7 @@ button {
   font-size: 18px;
   z-index: 1;
 }
+
 
 #cut-diamond {
   border-style: solid;
