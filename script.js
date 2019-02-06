@@ -2,11 +2,12 @@ const body = document.querySelector("body");
 const floor = document.querySelector(".floor-scene");
 const ground = document.querySelector(".ground");
 const gems = document.querySelector(".gem");
-const gypsy = document.querySelector(".wait-gypsy");
 const instructions = document.querySelector(".instructions");
 const startButton = document.querySelector("#start-button");
 const openingPage = document.querySelector(".opening-page");
 const foliage = document.querySelector(".foliage");
+const gypsyText = document.querySelector('.hello')
+
 //Starting Conditions
 let returnedGemObjs = [];
 let gemCount = 0;
@@ -61,17 +62,18 @@ const gypsyTurnsRed = () => {
   const angryGypsy = document.createElement("div");
   angryGypsy.classList.add("angry-gypsy-red");
   openingPage.appendChild(angryGypsy);
-  document.querySelector(".hello").innerText =
-    "STOP THIEF!!! POLICE STOP THIS TRAVELER!!CURSES ON YOU FOR ALL ETERNITY! ";
+  gypsyText.innerHTML =
+    "<h2>STOP THIEF!!! <br> POLICE STOP THIS TRAVELER!! <br> CURSES ON YOU FOR ALL ETERNITY!</h2>";
+  restartButton(openingPage);
 };
 
 //helper function for winningPicks
 //to ask the player to choose again
 const chooseAgain = () => {
-  winningText.innerText = `Please pick a number between 1 and ${
+  gypsyText.innerText = `Please pick a number between 1 and ${
     returnedGemObjs.length
   }`;
-  gypsy.removeChild("#form");
+  openingPage.removeChild("#form");
   createNumberForm("new number");
 };
 
@@ -96,7 +98,7 @@ const firstNumberInput = () => {
   if (
     checkDifferentNumbers(pickedNumber, secondPickedNumber, lastPickedNumber)
   ) {
-    winningText.innerText = `Ahh yes. The ${
+    gypsyText.innerText = `Ahh yes. The ${
       returnedGemObjs[pickedNumber - 1].stone
     } is such a beautiful ${
       returnedGemObjs[pickedNumber - 1].color
@@ -117,7 +119,7 @@ const secondNumberInput = () => {
   if (
     checkDifferentNumbers(pickedNumber, firstPickedNumber, lastPickedNumber)
   ) {
-    winningText.innerText = `Your present speaks to the ${
+    gypsyText.innerText = `Your present speaks to the ${
       returnedGemObjs[pickedNumber - 1].color
     } ${returnedGemObjs[pickedNumber - 1].stone} signifying ${
       returnedGemObjs[pickedNumber - 1].heals
@@ -136,7 +138,7 @@ const finalNumberInput = () => {
   if (
     checkDifferentNumbers(pickedNumber, firstPickedNumber, secondPickedNumber)
   ) {
-    winningText.innerText = `Your futures bodes of ${
+    gypsyText.innerText = `Your futures bodes of ${
       returnedGemObjs[pickedNumber - 1].heals
     }. This requires further study of the ${
       returnedGemObjs[pickedNumber - 1].color
@@ -150,19 +152,22 @@ const finalNumberInput = () => {
 //WINNING SEQUENCE
 //winning picks asks for three numbers if player picks > lowestCount
 const winningPicks = () => {
-  const winningText = document.createElement("h1");
-  gypsy.appendChild(winningText);
-  winningText.innerText = `Thank you, kind traveler, for helping me. ... ... ... I'm feeling impressed to tell you coming thing. Can you please give me a number between 1 and ${
+  floor.style.display = "none";
+  openingPage.style.display = "";
+  const winningText = document.createElement("div");
+  winningText.classList.add('hello')
+  openingPage.appendChild(winningText);
+  gypsyText.innerHTML = `<h2>Thank you, kind traveler, for helping me. <br>... ... ...<br> I'm feeling impressed to tell you coming thing. <br> Can you please give me a number between 1 and ${
     returnedGemObjs.length
-  }.`;
+  }.</h2>`;
   firstNumberInput();
-  winningText.innerText = `Now for your present. Give me a different number between 1 and ${
+  gyspyText.innerHTML = `<h2>Now for your present. Give me a different number between 1 and ${
     returnedGemObjs.length
-  }.`;
+  }.</h2>`;
   secondNumberInput();
-  winningText.innerText = `Now, give me a different number between 1 and ${
+  gyspyText.innerHTML = `<h2>Now, give me a different number between 1 and ${
     returnedGemObjs.length
-  }.`;
+  }.</h2>`;
   finalNumberInput();
 };
 
@@ -281,20 +286,21 @@ const startGameSequence = () => {
   setTimeout(function() {
     const newHello = document.createElement("div");
     newHello.classList.add("hello");
-    newHello.innerHTML = "Hello traveler. We seem to be lost.";
+    newHello.innerHTML = "<h2>Hello traveler. <br> We seem to be lost.</h2>";
     openingPage.appendChild(newHello);
     setTimeout(function() {
       console.log("this is batty");
       const newBats = document.createElement("div");
       newBats.classList.add("bats");
       openingPage.appendChild(newBats);
-      document.querySelector(".hello").innerText = "What was THAT!";
+      gyspyText.innerHTML = "<h2>What was THAT!</h2>";
       setTimeout(function() {
         document.querySelector(".bats").remove();
-        document.querySelector(".hello").innerText = "Oh no! Help me please!";
+        gypsyText.innerHTML =
+          "<h2>Oh no! <br> Help me please!</h2>";
         const helpButton = document.createElement("button");
         helpButton.innerText = "Click Here to Help!";
-        document.querySelector(".hello").appendChild(helpButton);
+        gypsyText.appendChild(helpButton);
         helpButton.addEventListener("click", goToPickUp);
       }, 3000);
     }, 3000);
