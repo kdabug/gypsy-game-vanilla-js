@@ -6,14 +6,14 @@ const instructions = document.querySelector(".instructions");
 const startButton = document.querySelector("#start-button");
 const openingPage = document.querySelector(".opening-page");
 const foliage = document.querySelector(".foliage");
-const gypsyText = document.querySelector('.hello');
-const form = document.querySelector('#form');
+//const gypsyText = document.querySelector('.hello');
+const form = document.querySelector('input');
 
 //Starting Conditions
 let returnedGemObjs = [];
 let gemCount = 0;
 let countDown = 20;
-let lowestScore = 15;
+let lowestScore = 1;
 let lastPickedNumber = -1;
 let firstPickedNumber = -1;
 let secondPickedNumber = -1;
@@ -37,7 +37,7 @@ const restartButton = element => {
   const createRestart = document.createElement("button");
   createRestart.innerText = "";
   createRestart.id = "restart-button";
-  createRestart.innerHTML = "<h1>Restart<h1>";
+  createRestart.innerHTML = "<h1>Restart</h1>";
   element.appendChild(createRestart);
   createRestart.addEventListener("click", function() {
     document.location.reload();
@@ -46,11 +46,8 @@ const restartButton = element => {
 
 //create number form
 const createNumberForm = place => {
-  askForANumber = document.createElement("INPUT");
-  askForANumber.id = "form";
-  askForANumber.setAttribute("type", "number");
-  askForANumber.setAttribute("placeholder", place);
-  document.querySelector('.hello').appendChild(askForANumber);
+  form.style.display = '';
+  form.setAttribute("placeholder", place);
 };
 
 //////FUNCTIONS
@@ -74,7 +71,7 @@ const chooseAgain = () => {
   document.querySelector('.hello').innerText = `Please pick a number between 1 and ${
     returnedGemObjs.length
   }`;
-  openingPage.removeChild(form);
+  openingPage.remove(form);
   createNumberForm("new number");
 };
 
@@ -105,7 +102,7 @@ const finalNumberInput = () => {
       returnedGemObjs[pickedNumber - 1].color
     } ${returnedGemObjs[pickedNumber - 1].stone}.</p>`;
     lastPickedNumber = pickedNumber;
-    openingPage.removeChild(form);
+    form.style.display = 'none';
     setTimeout(function() {
       document.querySelector('.hello').innerHTML = `<h2>Now for your present. Give me a different number between 1 and ${
         returnedGemObjs.length}.</h2>`;
@@ -114,10 +111,12 @@ const finalNumberInput = () => {
   } else {
     chooseAgain();
   }
-  document.querySelector('.hello').innerHTML = `<h2>Now for your present. Give me a different number between 1 and ${
-    returnedGemObjs.length
-  }.</h2>`;
-  
+ openingPage.remove(form);
+
+ setTimeout(function() {
+   openingPage.remove(document.querySelector('.openingGypsy'));
+   document.querySelector('.hello').innerHTML = '<h2> *POOF* <br><br></h2> <p>she is gone</p>';
+ }, 3000);
 };
 
 //helper function for winningPicks
@@ -133,7 +132,7 @@ const secondNumberInput = () => {
       returnedGemObjs[pickedNumber - 1].heals
     }.</p>`;
     secondPickedNumber = pickedNumber;
-    openingPage.removeChild(form);
+    form.style.display = 'none';
     setTimeout(function() {
       document.querySelector('.hello').innerHTML = `<h2>Now, give me a different number between 1 and ${
         returnedGemObjs.length
@@ -161,7 +160,7 @@ const firstNumberInput = () => {
       returnedGemObjs[pickedNumber - 1].heals
     }.</p>`;
     firstPickedNumber = pickedNumber;
-    openingPage.removeChild("#form");
+    form.style.display = 'none';
     setTimeout(function() {
       document.querySelector('.hello').innerHTML = `<h2>Now for your present. Give me a different number between 1 and ${
         returnedGemObjs.length}.</h2>`;
@@ -176,13 +175,12 @@ const firstNumberInput = () => {
 //WINNING SEQUENCE
 //winning picks asks for three numbers if player picks > lowestCount
 const winningPicks = () => {
-  debugger
   floor.style.display = "none";
   openingPage.style.display = "";
-  document.querySelector('.hello').innerHTML = `<h2>Thank you, kind traveler, for helping me. <br>... ... ...<br> I'm feeling impressed to tell you coming thing. <br> Can you please give me a number between 1 and ${
+  document.querySelector('.hello').innerHTML = `<p>Thank you, kind traveler, for helping me. <br>... ... ...<br> I'm feeling impressed to tell you coming thing. <br> Can you please give me a number between 1 and ${
     returnedGemObjs.length
-  }.</h2>`;
-  setTimeout(firstNumberInput, 3000)
+  }.</p>`;
+  firstNumberInput();
 };
 
 // countDownTimer takes countDown and starts a countdown timer
@@ -205,9 +203,6 @@ const countDownTimer = () => {
   countDown--;
 };
 
-// const endScene = () => {
-//   gypsy.style.display = "none";
-// };
 
 //randomPosition takes and item and gives it a random position
 const randomPosition = item => {
@@ -263,7 +258,7 @@ const pickUpGemEvent = id => {
         returnedGemObjs.push(gemObjs[i]);
         gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
         gemCount++;
-        addGemCounter.innerHTML = '<h2>Gems: ${gemCount}</h2>';
+        addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
       }
     }
     document.querySelector(".picked").remove();

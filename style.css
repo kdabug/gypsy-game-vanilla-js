@@ -23,6 +23,15 @@ button {
   width: 100px;
 }
 
+input {
+  display: none;
+  position: absolute;
+  height: 24px;
+  width: 60px;
+  bottom: 10%;
+  left: 30%;
+  z-index: 2;
+}
 /* //OPENING SCENE */
 .opening-page {
   background-image: url("./images/forest_background_leafless_trees_icons_cartoon_design_6829779.jpg");
@@ -189,8 +198,8 @@ button {
   position: absolute;
   top: 20%;
   left: 20%;
-  height: 2%;
-  width: 3%;
+  height: 0%;
+  width: 0%;
   z-index: 1;
   animation-name: bat-flying;
   animation-duration: 0.5s;
@@ -267,12 +276,7 @@ button {
 /* //GEMS SCENE */
 
 
-#form{
-  display: flex;
-  position: relative;
-  bottom: 0;
-  left: 30%;
-}
+
 
 /* to note: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
 
@@ -281,7 +285,7 @@ button {
 
 .timer {
   font-family: "M PLUS 1p", sans-serif;
-  color: black;
+  color: white;
   position: fixed;
   background: transparent;
   bottom: 0;
@@ -289,18 +293,21 @@ button {
   border: solid 2px black;
   height: 20vh;
   width: 30vw;
+  z-index: 2;
 }
 
 .timer h2 {
   margin: 20px;
   font-size: 18px;
+  z-index: 1
+
 }
 .instructions {
   font-family: "M PLUS 1p", sans-serif;
-  color: black;
+  color: white;
   font-size: 20px;
   position: fixed;
-  background-color: rgba(50, 50, 50, 0.2);
+  background-color: rgba(50, 50, 50, 0.6);
   bottom: 0;
   border: solid 2px black;
   height: 20vh;
@@ -309,13 +316,14 @@ button {
 }
 .instructions h1 {
   margin: 20px;
-  color: black;
+  color: white;
   font-size: 20px;
 }
 .instructions h2 {
-  color: black;
+  color: white;
   font-size: 18px;
   z-index: 1;
+  margin: 20px;
 }
 
 
@@ -364,6 +372,10 @@ button {
 }
 
 /* THE GEMS */
+
+#rose-quartz, #danburite {
+  height: 20px;
+}
 
 #rose-quartz {
   background: pink;
