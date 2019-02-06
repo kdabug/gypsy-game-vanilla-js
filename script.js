@@ -4,19 +4,22 @@ const ground = document.querySelector(".ground");
 const gems = document.querySelector(".gem");
 const instructions = document.querySelector(".instructions");
 const startButton = document.querySelector("#start-button");
+const numberSubmitButton = document.querySelector('#submit-button')
 const openingPage = document.querySelector(".opening-page");
 const foliage = document.querySelector(".foliage");
 //const gypsyText = document.querySelector('.hello');
+const formDiv = document.querySelector('.show-input');
 const form = document.querySelector('input');
 
 //Starting Conditions
 let returnedGemObjs = [];
 let gemCount = 0;
-let countDown = 20;
+let countDown = 5;
 let lowestScore = 1;
 let lastPickedNumber = -1;
 let firstPickedNumber = -1;
 let secondPickedNumber = -1;
+let pickedNumber = 0;
 
 //create gem counter
 const gemNameText = document.createElement("h2");
@@ -44,11 +47,13 @@ const restartButton = element => {
   });
 };
 
-//create number form
-const createNumberForm = place => {
-  form.style.display = '';
-  form.setAttribute("placeholder", place);
-};
+const getPickedNumber = () => {
+  const number = form.value;
+  return number;
+}
+
+
+
 
 //////FUNCTIONS
 
@@ -68,11 +73,9 @@ const gypsyTurnsRed = () => {
 //helper function for winningPicks
 //to ask the player to choose again
 const chooseAgain = () => {
-  document.querySelector('.hello').innerText = `Please pick a number between 1 and ${
+  document.querySelector('.hello').innerHTML = `<p>Please pick a number between 1 and ${
     returnedGemObjs.length
-  }`;
-  openingPage.remove(form);
-  createNumberForm("new number");
+  }</p>`;
 };
 
 //helper function for winningPicks
@@ -87,57 +90,68 @@ const checkDifferentNumbers = (picked, diff1, diff2) => {
     return true;
   }
 };
+//event listeners for submitted numbers
+const firstSubmitEvent = (ev) => {
+  ev.preventDefault();
+  pickedNumber = getPickedNumber();
+  firstNumberInput();
+}
 
+const secondSubmitEvent = (ev) => {
+    ev.preventDefault();
+    pickedNumber = getPickedNumber();
+    secondNumberInput();
+  }
+
+const finalSubmitEvent = (ev) => {
+    ev.preventDefault();
+    pickedNumber = getPickedNumber();
+    finalNumberInput();
+  }
 
 //helper function for winningPicks
 //final input sequence
 const finalNumberInput = () => {
-  createNumberForm("final number");
   if (
     checkDifferentNumbers(pickedNumber, firstPickedNumber, secondPickedNumber)
   ) {
-    document.querySelector('.hello').innerHTML = `<p>Your futures bodes of ${
+    document.querySelector('.hello').innerHTML = `<h2>Your future ...bodes of... ${
       returnedGemObjs[pickedNumber - 1].heals
     }. This requires further study of the ${
       returnedGemObjs[pickedNumber - 1].color
-    } ${returnedGemObjs[pickedNumber - 1].stone}.</p>`;
+    } ${returnedGemObjs[pickedNumber - 1].stone}....hmmm</h2> <br> <h3> The woman mumbles</h3> <br> 
+    <h2> Yes you picked ${pickedNumber}....I pulled out that card in my tarot. The ${tarotDeck[pickedNumber-1].number} of ${tarotDeck[pickedNumber-1].suit}. 
+    I tell you to be aware of ${tarotDeck[pickedNumber-1].meaning}.`;
     lastPickedNumber = pickedNumber;
-    form.style.display = 'none';
-    setTimeout(function() {
-      document.querySelector('.hello').innerHTML = `<h2>Now for your present. Give me a different number between 1 and ${
-        returnedGemObjs.length}.</h2>`;
-      setTimeout(secondNumberInput, 3000)},
-       4000);
+ setTimeout(function() {
+   document.querySelector('.openingGypsy').style.display = 'none';
+   document.querySelector('.hello').innerHTML = '<h2> *POOF* <br><br></h2> <p>she is gone</p>';
+ }, 4000);
+ restartButton(openingPage);
   } else {
     chooseAgain();
   }
- openingPage.remove(form);
-
- setTimeout(function() {
-   openingPage.remove(document.querySelector('.openingGypsy'));
-   document.querySelector('.hello').innerHTML = '<h2> *POOF* <br><br></h2> <p>she is gone</p>';
- }, 3000);
 };
 
 //helper function for winningPicks
 //second input sequence
 const secondNumberInput = () => {
-  createNumberForm("second number");
   if (
     checkDifferentNumbers(pickedNumber, firstPickedNumber, lastPickedNumber)
   ) {
-    document.querySelector('.hello').innerHTML = `<p>Your present speaks to the ${
+    document.querySelector('.hello').innerHTML = `<p>Your present speaks <br> to the ${
       returnedGemObjs[pickedNumber - 1].color
-    } ${returnedGemObjs[pickedNumber - 1].stone} signifying ${
+    } ${returnedGemObjs[pickedNumber - 1].stone} <br> signifying that you are currently<br> working on or with some significant <br> ${
       returnedGemObjs[pickedNumber - 1].heals
     }.</p>`;
     secondPickedNumber = pickedNumber;
-    form.style.display = 'none';
+    numberSubmitButton.removeEventListener('click', secondSubmitEvent);
     setTimeout(function() {
-      document.querySelector('.hello').innerHTML = `<h2>Now, give me a different number between 1 and ${
+      document.querySelector('.hello').innerHTML = `<h2>Now for your future...</h2><br> <h3>Give the woman a different number between 1 and ${
         returnedGemObjs.length
-      }.</h2>`;
-      setTimeout(finalNumberInput, 3000)},
+      }.</h3>`;
+      numberSubmitButton.addEventListener('click', finalSubmitEvent);
+    },
        4000);
   } else {
     chooseAgain();
@@ -147,27 +161,28 @@ const secondNumberInput = () => {
 //helper function for winningPicks
 //first input sequence
 const firstNumberInput = () => {
-  createNumberForm("first number");
-  let pickedNumber = document.querySelector("#form").value;
   if (
-    checkDifferentNumbers(pickedNumber, secondPickedNumber, lastPickedNumber)
+    checkDifferentNumbers(pickedNumber, secondPickedNumber, lastPickedNumber) != 1
   ) {
+    console.log("i chose again")
+    chooseAgain();
+
+  } else {
     document.querySelector('.hello').innerHTML = `<p>Ahh yes. The ${
       returnedGemObjs[pickedNumber - 1].stone
     } is such a beautiful ${
       returnedGemObjs[pickedNumber - 1].color
-    }. It's telling me your past was filled with ${
+    } stone. It's telling me your recent past has been filled with ${
       returnedGemObjs[pickedNumber - 1].heals
     }.</p>`;
     firstPickedNumber = pickedNumber;
-    form.style.display = 'none';
+    numberSubmitButton.removeEventListener('click', firstSubmitEvent);
     setTimeout(function() {
-      document.querySelector('.hello').innerHTML = `<h2>Now for your present. Give me a different number between 1 and ${
-        returnedGemObjs.length}.</h2>`;
-      setTimeout(secondNumberInput, 3000)},
-     4000);
-  } else {
-    chooseAgain();
+    document.querySelector('.hello').innerHTML = `<h2>I'm sensing your present state ...</h2><br><h3>Give me a different number between 1 and ${
+    returnedGemObjs.length}.</h3>`;
+    numberSubmitButton.addEventListener('click', secondSubmitEvent);
+  },
+    5000);
   }
 
 };
@@ -180,7 +195,8 @@ const winningPicks = () => {
   document.querySelector('.hello').innerHTML = `<p>Thank you, kind traveler, for helping me. <br>... ... ...<br> I'm feeling impressed to tell you coming thing. <br> Can you please give me a number between 1 and ${
     returnedGemObjs.length
   }.</p>`;
-  firstNumberInput();
+numberSubmitButton.addEventListener('click', firstSubmitEvent);
+  
 };
 
 // countDownTimer takes countDown and starts a countdown timer
