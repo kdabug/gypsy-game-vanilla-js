@@ -1,12 +1,12 @@
 const body = document.querySelector("body");
 const floor = document.querySelector(".floor-scene");
 const ground = document.querySelector(".ground");
-// const rocks = document.querySelector(".rock");
-// const leaves = document.querySelector(".leaf");
 const gems = document.querySelector(".gem");
 const gypsy = document.querySelector(".wait-gypsy");
 const instructions = document.querySelector(".instructions");
-
+const startButton = document.querySelector("#start-button");
+const openingPage = document.querySelector(".opening-page");
+const foliage = document.querySelector(".foliage");
 //Starting Conditions
 let returnedGemObjs = [];
 let gemCount = 0;
@@ -55,18 +55,14 @@ const createNumberForm = place => {
 
 //turns Gypsy Red - LOSING sequence
 const gypsyTurnsRed = () => {
-  gypsy.id = "changed";
-  const meanGypsyText = document.createElement("h2");
-  meanGypsyText.innerText =
-    "STOP THIEF! /n POLICE!! THIS TRAVELER IS STEALING MY PRECIOUS GEMS!";
-  gypsy.appendChild(meanGypsyText);
-  setTimeout(function() {
-    meanGypsyText.innerText = "";
-    restartButton(gypsy);
-    setTimeout(function() {
-      document.location.reload();
-    }, 10000);
-  }, 2000);
+  floor.style.display = "none";
+  openingPage.style.display = "";
+  document.querySelector(".openingGypsy").remove();
+  const angryGypsy = document.createElement("div");
+  angryGypsy.classList.add("angry-gypsy-red");
+  openingPage.appendChild(angryGypsy);
+  document.querySelector(".hello").innerText =
+    "STOP THIEF!!! POLICE STOP THIS TRAVELER!!CURSES ON YOU FOR ALL ETERNITY! ";
 };
 
 //helper function for winningPicks
@@ -176,7 +172,7 @@ const countDownTimer = () => {
   if (countDown === 0) {
     createTimer.innerText = `Timer: 0`;
     clearInterval(countDownTimer);
-    alert(`You collected ${gemCount} gems.`);
+    //alert(`You collected ${gemCount} gems.`);
     ground.style.display = "none";
     if (gemCount >= lowestScore) {
       winningPicks();
@@ -217,13 +213,11 @@ const pickUpItemEvent = item => {
 //and adds an event listener
 const placeItems = array => {
   for (let j = 0; j < foliageItems.length; j++) {
-    for (let i = 0; i < foliageItem[i].number; i++) {
-      const newDiv = document.createElement("div");
-      item = document.createElement("img");
-      item.setAttribute("src", foliageItem[i].url);
-      item.classList.add(foliageItem[i].className);
-      newDiv.appendChild(item);
-      foliageItem[i].selector.appendChild(newDiv);
+    for (let i = 0; i <= foliageItems[j].number; i++) {
+      const item = document.createElement("img");
+      item.setAttribute("src", foliageItems[j].url);
+      item.classList.add(foliageItems[j].className);
+      foliage.appendChild(item);
       randomPosition(item);
       pickUpItemEvent(item);
     }
@@ -258,13 +252,6 @@ const pickUpGemEvent = id => {
 };
 
 //helper functions for play game sequence
-const groundPlayPickUp = () => {
-  ground.style.display = "show";
-  gemObjs.forEach(el => placeGems(el));
-  console.log("This is: ", gemObjs.length);
-  setInterval(countDownTimer, 1000);
-};
-
 const setUpGround = () => {
   for (let i = 0; i < gemObjs.length; i++) {
     placeGems(gemObjs[i].id);
@@ -273,18 +260,50 @@ const setUpGround = () => {
   placeItems(foliageItems);
 };
 
-//Play GAME
-const playGame = () => {
-  //starting scene
-  floor.style.display = "none";
-
-  //groundscene
+const removedFunction = () => {
+  setInterval(countDownTimer, 1000);
   console.log("I want to play the game.");
-  setUpGround();
-  groundPlayPickUp();
-  //outcomes scene
-
-  //final scene - cut to beginning
 };
 
-//playGame();
+const goToPickUp = ev => {
+  ev.preventDefault();
+  setUpGround();
+  openingPage.style.display = "none";
+  floor.style.display = "initial";
+  document.querySelector(".ground").style.display = "initial";
+  removedFunction();
+};
+
+const startGameSequence = () => {
+  const newGypsy = document.createElement("div");
+  newGypsy.classList.add("openingGypsy");
+  openingPage.appendChild(newGypsy);
+  setTimeout(function() {
+    const newHello = document.createElement("div");
+    newHello.classList.add("hello");
+    newHello.innerHTML = "Hello traveler. We seem to be lost.";
+    openingPage.appendChild(newHello);
+    setTimeout(function() {
+      console.log("this is batty");
+      const newBats = document.createElement("div");
+      newBats.classList.add("bats");
+      openingPage.appendChild(newBats);
+      document.querySelector(".hello").innerText = "What was THAT!";
+      setTimeout(function() {
+        document.querySelector(".bats").remove();
+        document.querySelector(".hello").innerText = "Oh no! Help me please!";
+        const helpButton = document.createElement("button");
+        helpButton.innerText = "Click Here to Help!";
+        document.querySelector(".hello").appendChild(helpButton);
+        helpButton.addEventListener("click", goToPickUp);
+      }, 3000);
+    }, 3000);
+  }, 3000);
+};
+
+//start button event listener
+startButton.addEventListener("click", ev => {
+  ev.preventDefault();
+  document.querySelector(".title").remove();
+  setTimeout(startGameSequence(), 2000);
+});

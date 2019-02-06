@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="rocks_trees.js"></script>
-    <script src="gems.js"></script>
-    <script src="cards.js"></script>
+    <script defer src="gems.js"></script>
+    <script defer src="cards.js"></script>
     <script defer src="opening_scene.js"></script>
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css" />
@@ -24,12 +24,8 @@
     <div class="opening-page">
       <div class="title">
         <h1>Gypsy</h1>
-        <button>ENTER</button>
+        <button id="start-button">ENTER</button>
       </div>
-      <div class="openingGypsy"></div>
-      <div class="sun"></div>
-      <div class="path"></div>
-      <div class="bush"></div>
     </div>
     <div class="floor-scene">
       <div class="ground">
@@ -43,13 +39,6 @@
           <h1>Hurry! Help the woman pick up her crystals!</h1>
         </div>
         <div class="tarot-spread"></div>
-      </div>
-      <div class="wait-gypsy">
-        <img
-          id="gypsy-picture"
-          src="https://images.livemint.com/rf/Image-621x414/LiveMint/Period1/2013/03/20/Photos/Lens--621x414.jpg"
-          alt="gypsy-woman"
-        />
       </div>
     </div>
   </body>

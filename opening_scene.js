@@ -1,4 +1,30 @@
 // const openingPage = document.querySelector(".opening-page");
+// const spill = document.querySelector(".spill-gems");
+// const randomColor =
+//   "rgb(" +
+//   Math.floor(Math.random() * 255) +
+//   "," +
+//   Math.floor(Math.random() * 255) +
+//   "," +
+//   Math.floor(Math.random() * 255) +
+//   ")";
+
+// const newLeft = parseInt(spill.style.left) + (10*Math.random());
+// const newbottom = parseInt(spill.style.top) + (10*Math.random());
+
+// const createFlyingGems = (number, className) => {
+//   for (let i = 0; i <= number; i++) {
+//     const newEl = document.createElement("div");
+//     newEl.classList.add(className);
+//     newEl.style.backgroundColor = randomColor;
+//     spill.appendChild(newEl);
+//     newEl.animate([ {opacity: 1},
+//         { left: newLeft+'px', bottom: newBottom+'px', offset: 0.7 },
+//         { left: newLeft+10+'px', bottom: 1%} ],
+//       2000);
+//   }
+// };
+
 // const treeCut = window.innerWidth * 0.4;
 // const bushDiv = document.querySelector(".bush");
 
