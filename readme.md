@@ -1,41 +1,60 @@
-## GAME PROPOSAL
+## GYPSY
 
-**WIREFRAMES**
-See drawn sketches of scenes for gameplay, including:
-
-- opening forest scene (with old woman transition);
-- floor scene (where gameplay happens);
-- ending scene where old woman gives advice (via tarot if opt. is reached) or sends you to prison;
-- potential: tarot card spread;
-- reprisal to opening scene (where game loops to a reset);
+**link:** https://gypsy-in-red.surge.sh
 
 **GAME DESCRIPTION**
 
-You are walking down a road, when an old woman pops out. She drops something (this will be a text-based cue). You are sent to a 'ground scene' and told to help her pick up her items.
+You are walk into the woods. An old woman pops out. You are sent to a 'ground scene' and told to help her pick up her items.
 
-**This is the most viable product:** You have 20 seconds to pick up as many gems as possible. You can not pick up rocks or leaves. There will be a count-down timer, a gem counter (which removes points for picking up rocks and leaves), and a text display which tells you the gems you are picking up.
+You have 20 seconds to pick up as many gems as possible while avoiding the rocks and leaves. On the screen you will see a count-down timer, a gem counter (which removes points for picking up rocks and leaves), and a text display which tells you the gems you are picking up.
 
-If, at the end of the timer, you have less than a certain number of gems - the old woman will call the police and claim that you are a theif! The screen turns red (with prison bars closing over?). Scene ends and 'the end' in script with a button to reload the game.
+If, at the end of the timer, you have less than a certain number of gems - the old woman will claim that you are a thief and curse you forever. You have the option to restart the game.
 
-Otherwise the old woman will thank you and tell you how many of the gems you collected. She will say she has something to tell you and ask you for a series of three numbers. Those numbers will correspond with the index of all of the gems you picked up, and she will tell you that there are good things ahead for the qualities of gems that you chose.
+If you collect the required number of gems, the old woman will thank you and tell you how many of the gems you collected. She will say she has something to tell you and ask you for a series of three numbers. Those numbers will correspond with the order of all of the gems you picked up, and she will tell you your past, present, and future based on the gems that you picked up. She reads you a tarot card for your future as well and vanishes. The restart button appears.
 
-It then cuts back to the opening scene with a 'she vanished' and a 'the end' with a congratulations on you positive future and a retry button.
+**CODE SNIPPET**
 
-**Optional addition:** a tarot card spread instead of a choosing three numbers. Still choosing three of the cards on the screen. Also still using the general area (i.e. love, adventure, career, etc.) and combining it with the read of the card.
+Below, I create helper functions that will allow me to loop over an array of objects. For each object, the code will create a gem (as a div) that adopts the styling of the id corresponding to the gem's name. It then places the item in a random position on the screen and attaches an event listener to it. The event listener will remove the gem from the screen when the gem is clicked as well as add the object attached to the gem into a new array (which allows the gypsy to ask you questions about the gems you picked up later in the game).
 
-**MARKDOWN LANGUAGE**
+```
+//randomPosition takes and item and gives it a random position
+const randomPosition = item => {
+  item.style.left = Math.random() * window.innerWidth + "px";
+  item.style.top = Math.random() * window.innerHeight - 200 + "px";
+};
 
-**MAIN TECHNOLOGIES**
-css, html, javascript
+//placeGems makes a new element and appends it to the gems div
+const placeGems = identify => {
+const newEl = document.createElement("div");
+newEl.id = identify;
+gems.appendChild(newEl);
+randomPosition(newEl);
+};
 
-arrays, random positioning, and css indexing/positionings
+//pickUpGemEvent takes an element and attaches an event listener
+//that adds to counter and removes the item when it is clicked
+const pickUpGemEvent = id => {
+document.querySelector(`#${id}`).addEventListener("click", function() {
+const gemName = this.getAttribute("id");
+this.classList.add("picked");
+for (let i = 0; i < gemObjs.length; i++) {
+if (gemName === gemObjs[i].id) {
+returnedGemObjs.push(gemObjs[i]);
+gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
+gemCount++;
+addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
+}
+}
+document.querySelector(".picked").remove();
+});
+};
 
-**OBSTACLES**
-Finding out to to manipulate through CSS for different scenes.
-
-How to allow players to pick up gems and rocks that are over leaves without counting it as a loss.
-
-**SOLUTIONS**
-Adding event listeners to 'show' and 'hide' the display of certain CSS elements depending on the timeing of the game.
-
-Using z-index to differentiate between items?
+//helper functions for play game sequence
+const setUpGround = () => {
+for (let i = 0; i < gemObjs.length; i++) {
+placeGems(gemObjs[i].id);
+pickUpGemEvent(gemObjs[i].id);
+}
+placeItems(foliageItems);
+};
+```

@@ -15,12 +15,13 @@ const gameText = document.querySelector(".hello");
 //Starting Conditions
 let returnedGemObjs = [];
 let gemCount = 0;
-let countDown = 5;
-let lowestScore = 1;
+let countDown = 20;
+let lowestScore = 15;
 let lastPickedNumber = -1;
 let firstPickedNumber = -1;
 let secondPickedNumber = -1;
 let pickedNumber = 0;
+let level = "";
 
 //create gem counter
 const gemNameText = document.createElement("h2");
@@ -47,8 +48,6 @@ const restartButton = element => {
     document.location.reload();
   });
 };
-
-
 
 //////FUNCTIONS
 
@@ -85,7 +84,6 @@ const checkDifferentNumbers = (picked, diff1, diff2) => {
     return true;
   }
 };
-
 
 //event listeners for submitted numbers
 const getPickedNumber = () => {
@@ -242,7 +240,6 @@ const randomPosition = item => {
 //pickUpItem takes an id and add an event listener to picked up items
 const pickUpItemEvent = item => {
   item.addEventListener("click", function() {
-    console.log(this);
     this.classList.add("picked");
     gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
       item.id
@@ -281,7 +278,6 @@ const pickUpGemEvent = id => {
   document.querySelector(`#${id}`).addEventListener("click", function() {
     const gemName = this.getAttribute("id");
     this.classList.add("picked");
-    console.log(gemName);
     for (let i = 0; i < gemObjs.length; i++) {
       if (gemName === gemObjs[i].id) {
         returnedGemObjs.push(gemObjs[i]);
@@ -305,7 +301,6 @@ const setUpGround = () => {
 
 const sequenceTimer = () => {
   setInterval(countDownTimer, 1000);
-  console.log("I want to play the game.");
 };
 
 const goToPickUp = ev => {
@@ -317,40 +312,68 @@ const goToPickUp = ev => {
   sequenceTimer();
 };
 
-const levelClickEvent = (ev) => {
+const batsFlyThrough = () => {
+  console.log(level);
+  document.querySelector(".bats").style.display = "block";
+  gameText.innerHTML = "<h2>What was THAT!</h2>";
+  setTimeout(function() {
+    document.querySelector(".bats").remove();
+    gameText.innerHTML = "<h2>Oh no! <br> Help me please!</h2>";
+    const helpButton = document.createElement("button");
+    helpButton.innerText = "Click Here to Help!";
+    gameText.appendChild(helpButton);
+    helpButton.addEventListener("click", goToPickUp);
+  }, 3000);
+};
+
+const setLevel = ev => {
   ev.preventDefault;
-  level = getPickedNumber();
-  
-}
+  if (level === "hard") {
+    countDown = 20;
+    lowestScore = 24;
+    //document.querySelector("#submit-button").remove();
+    batsFlyThrough();
+  }
+  if (level === "normal") {
+    countDown = 20;
+    lowestScore = 20;
+    //document.querySelector("#submit-button").remove();
+    batsFlyThrough();
+  }
+  if (level === "easy" || level != true) {
+    countDown = 20;
+    lowestScore = 15;
+    //document.querySelector("#submit-button").remove();
+    batsFlyThrough();
+  }
+};
+
+const levelClickEvent = ev => {
+  ev.preventDefault;
+  level = document.querySelector("form").value;
+  debugger;
+  console.log(level);
+  batsFlyThrough();
+};
 
 const getTravelerLevel = () => {
-  gameText.innerHTML = '<h2>Tell me, have you traveled these woods before?</h2>
-  <form><input type="radio" name="level" value="hard"> Yes, many times! <br>
-  <input type="radio" name="level" value="normal"> Only once or twice. <br>
-  <input type="radio" name="level" value="easy!"> Never! </form>';
-  document.querySelector('#submit-button').style.display = 'show';
-numberSubmitButton.addEventListener('click', levelClickEvent)
-
-}
+  gameText.innerHTML =
+    '<h2>Tell me, have you traveled these woods before?</h2><form><input type="radio" name="level" value="hard"> <p>Yes, many times!</p> <br><input type="radio" name="level" value="normal"> <p>Only once or twice.</p> <br><input type="radio" name="level" value="easy"> <p>Never!</p><input type="submit"></form>';
+  let form2 = document.querySelector("form");
+  form2[3].removeEventListener();
+  form2[3].addEventListener("click", setLevel);
+  // createButton = document.createElement("button");
+  // createButton.id = "submit-button";
+  // createButton.innerHTML = "SUBMIT";
+  // createButton.addEventListener("click", levelClickEvent);
+  // gameText.appendChild(createButton);
+};
 const startGameSequence = () => {
   gypsy.style.display = "block";
   setTimeout(function() {
     gameText.style.display = "block";
     gameText.innerHTML = "<h2>Hello traveler. <br> We seem to be lost.</h2>";
-    setTimeout(getTravelerLevel, 3000);
-    setTimeout(function() {
-      console.log("this is batty");
-      document.querySelector(".bats").style.display = "block";
-      gameText.innerHTML = "<h2>What was THAT!</h2>";
-      setTimeout(function() {
-        document.querySelector(".bats").remove();
-        gameText.innerHTML = "<h2>Oh no! <br> Help me please!</h2>";
-        const helpButton = document.createElement("button");
-        helpButton.innerText = "Click Here to Help!";
-        gameText.appendChild(helpButton);
-        helpButton.addEventListener("click", goToPickUp);
-      }, 3000);
-    }, 3000);
+    setTimeout(batsFlyThrough, 3000);
   }, 3000);
 };
 
