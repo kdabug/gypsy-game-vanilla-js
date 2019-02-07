@@ -215,6 +215,16 @@ input {
   width: 150px;
 }
 
+
+.tarot {
+  position: absolute;
+  height: 50%
+  width: 20%;
+  bottom: 10%;
+  left: 30%
+}
+
+
 .bats {
   background-image: url("./images/bat.svg");
   background-size: cover;

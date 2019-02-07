@@ -119,14 +119,16 @@ const finalNumberInput = () => {
       returnedGemObjs[pickedNumber - 1].heals
     }. This requires further study of the ${
       returnedGemObjs[pickedNumber - 1].color
-    } ${returnedGemObjs[pickedNumber - 1].stone}....hmmm</h2> <br> <h3> The woman mumbles</h3> <br> 
-    <h2> Yes you picked ${pickedNumber}....I pulled out that card in my tarot. The ${tarotDeck[pickedNumber-1].number} of ${tarotDeck[pickedNumber-1].suit}. 
-    I tell you to be aware of ${tarotDeck[pickedNumber-1].meaning}.`;
+    } ${returnedGemObjs[pickedNumber - 1].stone}....hmmm</h2> <br> <h3> The woman mumbles.</h3>`;
     lastPickedNumber = pickedNumber;
  setTimeout(function() {
-   document.querySelector('.openingGypsy').style.display = 'none';
-   document.querySelector('.hello').innerHTML = '<h2> *POOF* <br><br></h2> <p>she is gone</p>';
- }, 4000);
+  const cardPicture = document.createElement("img");
+  cardPicture.classList.add('tarot')
+  cardPicture.setAttribute("src", shuffledDeck[pickedNumber-1].image );
+  openingPage.appendChild(cardPicture)
+   document.querySelector('.hello').innerHTML = `<h2> Yes you picked ${pickedNumber}....I pulled out that card in my tarot. The ${shuffledDeck[pickedNumber-1].number} of ${shuffledDeck[pickedNumber-1].suit}. 
+   Be Aware. ${shuffledDeck[pickedNumber-1].meaning}.<h2> *POOF* <br><br></h2> <p>she is gone</p>`;
+ }, 8000);
  restartButton(openingPage);
   } else {
     chooseAgain();
@@ -200,7 +202,8 @@ numberSubmitButton.addEventListener('click', firstSubmitEvent);
 };
 
 // countDownTimer takes countDown and starts a countdown timer
-//asynchronous event that triggers other events to occurs
+//asynchronous event that triggers 
+//either a winning scenario or a losing scenario
 const countDownTimer = () => {
   if (countDown === 0) {
     createTimer.innerText = `Timer: 0`;

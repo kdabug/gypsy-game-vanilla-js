@@ -2,7 +2,7 @@ const rocks = document.querySelector(".rock");
 const leaves = document.querySelector(".leaf");
 const foliageItems = [];
 
-createFoliageObject = (number, url, selector, className) => {
+createFoliageObject = (number, url, className) => {
   foliageItems.push({
     number,
     url,
