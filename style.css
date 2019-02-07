@@ -1,7 +1,9 @@
 /* GENERAL BODY */
 /* font-family: 'Dancing Script', cursive;
 font-family: 'M PLUS 1p', sans-serif; 
-font-family: 'Seaweed Script', cursive;*/
+font-family: 'Seaweed Script', cursive;
+font-family: 'Kaushan Script', cursive;;
+*/
 
 body {
   height: 100vh;
@@ -12,35 +14,55 @@ body {
 }
 
 button {
-  background-color: transparent;
   position: absolute;
   top: 50%;
   color: rgb(226, 27, 27);
+  background-color: rgba(117, 91, 91, 0.308);
   font-size: 20px;
   border: rgb(153, 106, 106) solid 2px;
   border-radius: 20%;
-  height: 35px;
-  width: 100px;
+  font-family: "Seaweed Script", cursive;
 }
 
-input { 
+input {
   position: absolute;
   height: 24px;
   width: 60px;
   z-index: 2;
 }
 
-#submit-button{
- z-index:2;
-}
-
 .show-input {
-  height: 20%;
+  display: none;
+  justify-content: flex-end;
+  position: absolute;
+  height: 10%;
   width: 20%;
   bottom: 0%;
-  left: 70%;
-  display: none;
+  right: 10%;
+  z-index: 3;
+}
+
+#number-guess {
+  position: absolute;
+  width: 20%;
+  left: 0;
+  top: 0;
+}
+
+#submit-button {
+  position: absolute;
+  right: 0;
+  top: 0;
   z-index: 2;
+  font-family: "M PLUS 1p", sans-serif;
+}
+#restart-button {
+  font-size: 30px;
+}
+#start-button {
+  font-size: 30px;
+  color: black;
+  top: 60%;
 }
 /* //OPENING SCENE */
 .opening-page {
@@ -57,26 +79,14 @@ input {
 }
 
 .title {
-  font-size: 50px;
+  font-size: 58px;
   padding: 70px;
   background: transparent;
   margin: 0px;
-  top: 15%;
+  top: 30%;
   display: flex;
   align-content: center;
   justify-content: center;
-}
-
-.title button {
-  background-color: transparent;
-  position: absolute;
-  top: 50%;
-  color: rgb(226, 27, 27);
-  font-size: 20px;
-  border: rgb(153, 106, 106) solid 2px;
-  border-radius: 20%;
-  height: 35px;
-  width: 100px;
 }
 
 .title h1 {
@@ -87,6 +97,8 @@ input {
   animation-duration: 7s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  position: absolute;
+  top: 20%;
 }
 
 @keyframes main {
@@ -104,7 +116,8 @@ input {
   }
 }
 
-.openingGypsy {
+.opening-gypsy {
+  display: none;
   background-image: url("./images/oldwomancartoon.png");
   background-size: cover;
   height: 30%;
@@ -136,10 +149,6 @@ input {
     bottom: 0;
     left: 25%;
   }
-}
-
-.show-input{
-  display: inline;
 }
 
 .angry-gypsy-red {
@@ -179,53 +188,68 @@ input {
 }
 
 .hello {
+  display: none;
   background-color: rgba(232, 235, 219, 0.63);
-  height: 40%;
+  height: 20%;
   width: 30%;
   position: absolute;
   bottom: 10%;
   right: 10%;
   font-size: 26px;
   padding: 20px;
-  align-content: center;
+  text-align: center;
   justify-content: center;
+  border-radius: 10%;
+  font-family: "Kaushan Script", cursive;
 }
 
 .hello h2 {
-  padding: 20px;
-  align-content: center;
-  justify-content: center;
+  font-size: 30px;
 }
 
 .hello h3 {
-  font-family: 'M PLUS 1p', sans-serif
-  font-size: 18px;
+  font-family: "M PLUS 1p", sans-serif;
+  font-size: 20px;
 }
-
 
 .hello p {
-  font-size: 18px;
-  margin: 10px;
+  font-size: 30px;
 }
-
-
 
 .hello button {
-  height: 90px;
-  width: 150px;
+  font-family: "M PLUS 1p", sans-serif;
+  height: 20%;
+  width: 90%;
+  align-content: center;
+  position: absolute;
+  left: 5%;
 }
-
 
 .tarot {
   position: absolute;
-  height: 50%
+  height: 50%;
   width: 20%;
-  bottom: 10%;
-  left: 30%
+  bottom: 15%;
+  left: 30%;
+  /* opacity: 1;
+  animation-iteration-count: 1;
+  animation-duration: 8s; */
 }
 
+/* @keyframes flash-out {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+  }
+} */
 
 .bats {
+  display: none;
   background-image: url("./images/bat.svg");
   background-size: cover;
   position: absolute;
@@ -245,10 +269,10 @@ input {
     height: 10%;
     width: 15%;
   }
-  80% {
+  70% {
     top: 20%;
     left: 20%;
-    height: 40%;
+    height: 50%;
     width: 60%;
   }
   100% {
@@ -258,7 +282,6 @@ input {
     width: 120%;
   }
 }
-
 
 /* //FLOOR SCENE */
 .floor-scene {
@@ -284,7 +307,7 @@ input {
   position: absolute;
   width: 100px;
   height: 100px;
-  opacity: 1;
+  opacity: 0.7;
 }
 
 .leaf {
@@ -308,9 +331,6 @@ input {
 }
 /* //GEMS SCENE */
 
-
-
-
 /* to note: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
 
 .gem {
@@ -332,8 +352,7 @@ input {
 .timer h2 {
   margin: 20px;
   font-size: 18px;
-  z-index: 1
-
+  z-index: 1;
 }
 .instructions {
   font-family: "M PLUS 1p", sans-serif;
@@ -351,14 +370,17 @@ input {
   margin: 20px;
   color: white;
   font-size: 20px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
 .instructions h2 {
   color: white;
   font-size: 18px;
   z-index: 1;
   margin: 20px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
 }
-
 
 #cut-diamond {
   border-style: solid;
@@ -406,7 +428,8 @@ input {
 
 /* THE GEMS */
 
-#rose-quartz, #danburite {
+#rose-quartz,
+#danburite {
   height: 20px;
 }
 
