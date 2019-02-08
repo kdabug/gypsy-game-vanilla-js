@@ -20,28 +20,28 @@ createGemObject(
   "danburite",
   "danburite",
   "pink",
-  "easing worries and peace of mind"
+  "easing of worries and peace of mind"
 );
 
 createGemObject(
   "pinkTopaz",
   "pink-topaz",
   "pink",
-  "vitalizing personal energies and creativities"
+  "vitalizing your personal energies and creativities"
 );
 
 createGemObject(
   "kunzite",
   "kunzite",
   "pink",
-  "filling voids with feelings of love and protection"
+  "filling mental and emotional voids with feelings of love and protection"
 );
 
 createGemObject(
   "pinkAgate",
   "pink-agate",
   "pink",
-  "balance in emotional love swings and supports parental love"
+  "balancing emotional love swings and supporting parental love"
 );
 
 createGemObject(
@@ -55,67 +55,67 @@ createGemObject(
   "redJasper",
   "red-Jasper",
   "red",
-  "empowerment, bringing strength to resist emotional domination by others, and the courage to overcome domestic violence"
+  "empowerment, bringing strength to resist emotional domination by others, or developing courage to overcome abusive relationships"
 );
 
 createGemObject(
   "garnet",
   "garnet",
   "red",
-  "protection of self, hurting others, removing inhibition, atrracting love, and dreaming"
+  "protecting yourself, perhaps hurting others, removing inhibition, atrracting love, and dreaming"
 );
 
-createGemObject("ruby", "ruby", "red", "abundance, wealth, passion, anger");
+createGemObject("ruby", "ruby", "red", "abundance, wealth, passion, and anger");
 
 createGemObject(
   "sunstone",
   "sunstone",
   "orange",
-  "nuturing, self-worth, vitality, regeneration"
+  "nuturing your self-worth, vitality, and regeneration"
 );
 
 createGemObject(
   "redAventurine",
   "red-aventurine",
   "red",
-  "reproductive organs, balancing male-female energies, metabolism"
+  "balancing male-female energies, reproductive organs, and your metabolism"
 );
 
 createGemObject(
   "orangeCalcite",
   "orange-calcite",
   "orange",
-  "energizing and cleanses"
+  "energizing rituals and cleanses"
 );
 
 createGemObject(
   "citrine",
   "citrine",
   "orange",
-  "protecting environment, cleansing energies, holding and sharing joys"
+  "protecting the environment, cleansing surrounding energies, and holding and sharing joys"
 );
 
 createGemObject(
   "mookaite",
   "mookaite",
   "yellow",
-  "versatility, peace, wholeness"
+  "versatility, peace, and wholeness"
 );
 
-createGemObject("amber", "amber", "orange", "wisdom, memory, cleaning");
+createGemObject("amber", "amber", "orange", "wisdom, memory, and cleaning");
 
 createGemObject(
   "septarian",
   "septarian",
   "orange",
-  "public speaking, caring for self, others, and the earth"
+  "public speaking, and caring for yourself, others, and the earth"
 );
 
 createGemObject(
   "yellowTopaz",
   "yellow-Topaz",
   "yellow",
-  "correction of vision, astuteness, problem-solving"
+  "correcting your vision and continuing to develop your astuteness and problem-solving abilities"
 );
 createGemObject(
   "yellowAventurine",
@@ -135,7 +135,7 @@ createGemObject(
   "ironPyrite",
   "iron-pyrite",
   "yellow",
-  "positive outlook, seeing beyond the physical"
+  "gaining a positive outlook and seeing beyond the physical"
 );
 
 createGemObject(
@@ -156,7 +156,7 @@ createGemObject(
   "rainbowObsidian",
   "rainbow-obsidian",
   "green",
-  "evolution of spirit and nature, cutting cords of old love"
+  "an evolution of spirit and nature, cutting the cords of old love"
 );
 
 createGemObject(
@@ -184,7 +184,7 @@ createGemObject(
   "gaiaStone",
   "gaia-stone",
   "green",
-  "the soul of the earth, environmental harmony"
+  "the soul of the earth and environmental harmony"
 );
 
 createGemObject(
@@ -205,7 +205,7 @@ createGemObject(
   "howlite",
   "howlite",
   "white",
-  "receiving wisdom, dreams, attunement"
+  "receiving wisdom, dreams, and spiritual attunement"
 );
 
 createGemObject(
@@ -215,7 +215,7 @@ createGemObject(
   "fertility and abundance"
 );
 
-createGemObject("jade", "jade", "green", "purity, serenity, nurturing");
+createGemObject("jade", "jade", "green", "purity, serenity, and nurture");
 
 createGemObject(
   "peridot",
@@ -228,7 +228,7 @@ createGemObject(
   "moldavite",
   "moldavite",
   "green",
-  "cosmic energies, releasing fixed ideas"
+  "cosmic energies and releasing fixed ideas"
 );
 
 createGemObject("fuschite", "fuschite", "green", "speeding healing process");
@@ -244,21 +244,21 @@ createGemObject(
   "apatite",
   "apatite",
   "blue",
-  "manifestation attuned to the future, connection to past lives"
+  "manifestations of the future and a connection to past lives"
 );
 
 createGemObject(
   "aquamarine",
   "aquamarine",
   "blue",
-  "dynamic change, guarding against figurative and literal drowning"
+  "dynamic change, and you are guarding against figurative and literal drowning"
 );
 
 createGemObject(
   "turquoise",
   "turquoise",
   "blue",
-  "bridging earth and heaven, communicaiton between worlds"
+  "bridging earth and heaven, focuing on the communicaiton between worlds"
 );
 
 createGemObject(
@@ -342,7 +342,7 @@ createGemObject(
   "larimar",
   "larimar",
   "blue",
-  "soothing and calm, like dolphins in the sea"
+  "soothing and calm moments, like dolphins in the sea"
 );
 
 createGemObject(
@@ -356,31 +356,31 @@ createGemObject(
   "sodalite",
   "sodalite",
   "blue",
-  "higher mind, integrity, urge toward idealism"
+  "higher mind, integrity, and an urge toward idealism"
 );
 createGemObject(
   "lithiumQuartz",
   "lithium-quartz",
   "purple",
-  "natural antidepressant, combats roots of mental and emotional disease"
+  "relieving depression and combating the deep roots of mental and emotional disease"
 );
 createGemObject(
   "amethyst",
   "amethyst",
   "purple",
-  "the sobriety stone, a natural tranquilizer and cleanser"
+  "the sobriety stone, which is a natural tranquilizer and cleanser"
 );
 createGemObject(
   "smokyAmethyst",
   "smoky-amethyst",
   "purple",
-  "grounds spiritual energy, reaching highest potentials"
+  "grounding spiritual energy and reaching your highest potentials"
 );
 createGemObject(
   "smokyHerkimer",
   "smoky-herkimer",
   "brown",
-  "soul-shielding, emphasizing meditation"
+  "soul-shielding and emphasizing meditation"
 );
 createGemObject(
   "argonite",
@@ -392,7 +392,7 @@ createGemObject(
   "fluorite",
   "fluorite",
   "purple",
-  "strength, overcoming disorganization"
+  "increasing physical and immune strength and overcoming disorganization"
 );
 createGemObject(
   "lepidolite",
@@ -404,7 +404,7 @@ createGemObject(
   "smokyQuartz",
   "smoky-quartz",
   "brown",
-  "efficiency, concentration, acceptance of the uncontrolables"
+  "efficiency, concentration, and acceptance of the uncontrolables"
 );
 createGemObject(
   "agate",
@@ -428,26 +428,26 @@ createGemObject(
   "serpentine",
   "serpentine",
   "brown",
-  "aiding meditation and understanding the spiritual basis of life"
+  "increasing meditation and understanding the spiritual basis of life"
 );
 
 createGemObject(
   "tigersEye",
   "tigers-eye",
   "brown",
-  "heals self-worth, self-criticism, and blocked creativity"
+  "healing your self-worth, undo-ing self-criticism which blocks your creativity"
 );
 createGemObject(
   "shungite",
   "shungite",
   "black",
-  "restores your connection to the ancient earth"
+  "restoring your connection to the ancient earth"
 );
 createGemObject(
   "tourmaline",
   "tourmaline",
   "black",
-  "dense energy protection against negative forces and self-doubts, promoting laid-back attitudes"
+  "dense energy protection against negative forces and self-doubts and promoting laid-back attitudes"
 );
 createGemObject(
   "blackSpinnel",
@@ -459,26 +459,26 @@ createGemObject(
   "obsidian",
   "obsidian",
   "black",
-  "divination, exposing flaws, protecting against untruths"
+  "divination, exposing flaws, and protecting against untruths"
 );
 createGemObject(
   "snowflakeObsidian",
   "snowflake-obsidian",
   "black",
-  "the stone of purity, empowerment from isolation"
+  "the stone of purity and empowerment from isolation"
 );
 
 createGemObject(
   "dalmationJasper",
   "dalmation-jasper",
   "black",
-  "promting relationship ties, family and loyalty, calming for children and animals"
+  "promting relationship ties, focusing on family and loyalty, and recieving calming energies from children and animals"
 );
 createGemObject(
   "tektite",
   "tektite",
   "black",
-  "a fertility talisman, seeing into other planes"
+  "a fertility talisman, which multiplies to see into other planes"
 );
 createGemObject(
   "hawksEye",
@@ -515,7 +515,7 @@ createGemObject(
   "quartz",
   "quartz",
   "white",
-  "cleansing, clarity of thought, bringing in rich and new energies"
+  "cleansing, clarity of thought, and bringing in rich and new energies"
 );
 createGemObject(
   "spiritQuartz",
@@ -535,7 +535,7 @@ createGemObject(
   "abaloneShell",
   "abalone-shell",
   "white",
-  "getting through touch emotional issues"
+  "getting through tough emotional issues"
 );
 createGemObject(
   "moonstone",
@@ -547,7 +547,7 @@ createGemObject(
   "opal",
   "opal",
   "white",
-  "loyalty and faithfulness, intensifies emotional states"
+  "loyalty and faithfulness, intense emotional states"
 );
 createGemObject(
   "diamond",

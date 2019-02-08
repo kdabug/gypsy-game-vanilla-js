@@ -60,8 +60,12 @@ const gypsyTurnsRed = () => {
   angryGypsy.classList.add("angry-gypsy-red");
   openingPage.appendChild(angryGypsy);
   document.querySelector(".hello").innerHTML =
-    "<h2>STOP THIEF!!!<br> CURSES ON YOU FOR ALL ETERNITY! </h2><br><h3>RUN</h3>";
+    "<h2>STOP THIEF!!!<br> CURSES ON YOU FOR ALL ETERNITY! </h2><br><h3>umm...RUN</h3>";
   restartButton(openingPage);
+  setTimeout(function() {
+    document.querySelector(".angry-gypsy-red").remove();
+    gameText.remove();
+  }, 14000);
 };
 
 //helper function for winningPicks
@@ -115,13 +119,13 @@ const finalNumberInput = () => {
   if (
     checkDifferentNumbers(pickedNumber, firstPickedNumber, secondPickedNumber)
   ) {
-    gameText.innerHTML = `<p>Your future ...bodes of... ${
+    gameText.innerHTML = `<h2>Your future ...bodes of... ${
       returnedGemObjs[pickedNumber - 1].heals
     }. This requires further study of the ${
       returnedGemObjs[pickedNumber - 1].color
     } ${
       returnedGemObjs[pickedNumber - 1].stone
-    }....hmmm</p><br><h3>The woman mumbles.</h3>`;
+    }....hmmm</h2><h3>The woman mumbles.</h3>`;
     lastPickedNumber = pickedNumber;
     formDiv.style.display = "none";
     setTimeout(function() {
@@ -129,17 +133,17 @@ const finalNumberInput = () => {
       cardPicture.classList.add("tarot");
       cardPicture.setAttribute("src", shuffledDeck[pickedNumber - 1].image);
       openingPage.appendChild(cardPicture);
-      gypsy.style.display = "none";
       gameText.innerHTML = `<h2> Yes you picked ${pickedNumber}....I pulled out that card in my tarot. The ${
-        shuffledDeck[pickedNumber - 1].number
-      } of ${shuffledDeck[pickedNumber - 1].suit}. 
-   Be Aware. ${shuffledDeck[pickedNumber - 1].meaning}.<h2>`;
+        shuffledDeck[pickedNumber - 1].name
+      } of ${shuffledDeck[pickedNumber - 1].suit}. <br>
+      Be Aware. ${shuffledDeck[pickedNumber - 1].meaning}.<h3>`;
       setTimeout(function() {
+        gypsy.style.display = "none";
         document.querySelector(".tarot").style.display = "none";
         gameText.innerHTML = `<h3>......she's.......gone?.......</h3>`;
         restartButton(openingPage);
-      }, 4000);
-    }, 6000);
+      }, 9000);
+    }, 9000);
   } else {
     chooseAgain();
   }
@@ -151,21 +155,21 @@ const secondNumberInput = () => {
   if (
     checkDifferentNumbers(pickedNumber, firstPickedNumber, lastPickedNumber)
   ) {
-    gameText.innerHTML = `<p>Your present speaks<br>to the ${
+    gameText.innerHTML = `<h2>Your present speaks to the ${
       returnedGemObjs[pickedNumber - 1].color
     } ${
       returnedGemObjs[pickedNumber - 1].stone
-    } <br>signifying that you are currently<br>working on or with some significant <br> ${
+    } <br>signifying that you are currently working with<br> ${
       returnedGemObjs[pickedNumber - 1].heals
-    }.</p>`;
+    }.</h2>`;
     secondPickedNumber = pickedNumber;
     numberSubmitButton.removeEventListener("click", secondSubmitEvent);
     setTimeout(function() {
-      gameText.innerHTML = `<h2>Now for your future...</h2><br> <h3>Give the woman a different number between 1 and ${
+      gameText.innerHTML = `<h2>Now for your future...</h2><br> <h3>Give her a different number between 1 and ${
         returnedGemObjs.length
       }.</h3>`;
       numberSubmitButton.addEventListener("click", finalSubmitEvent);
-    }, 6000);
+    }, 8000);
   } else {
     chooseAgain();
   }
@@ -180,21 +184,21 @@ const firstNumberInput = () => {
   ) {
     chooseAgain();
   } else {
-    gameText.innerHTML = `<p>Ahh yes. The ${
+    gameText.innerHTML = `<h2>Ahh yes. <br>The ${
       returnedGemObjs[pickedNumber - 1].stone
     } is such a beautiful ${
       returnedGemObjs[pickedNumber - 1].color
-    } stone. It's telling me your recent past has reflected itself with ${
+    } stone. <br>It's telling me your recent past has reflected itself with  <br>${
       returnedGemObjs[pickedNumber - 1].heals
-    }.</p>`;
+    }.</h2>`;
     firstPickedNumber = pickedNumber;
     numberSubmitButton.removeEventListener("click", firstSubmitEvent);
     setTimeout(function() {
-      gameText.innerHTML = `<h2>I'm sensing your present state ...</h2><br><h3>Give me a different number between 1 and ${
+      gameText.innerHTML = `<h2>I'm sensing your present state ...</h2><br><h3>Give her a different number between 1 and ${
         returnedGemObjs.length
       }.</h3>`;
       numberSubmitButton.addEventListener("click", secondSubmitEvent);
-    }, 6000);
+    }, 8000);
   }
 };
 
@@ -203,9 +207,9 @@ const firstNumberInput = () => {
 const winningPicks = () => {
   floor.style.display = "none";
   openingPage.style.display = "";
-  gameText.innerHTML = `<h2>Thank you, kind traveler, for helping me collect ${gemCount} of my gems. <br> <br> I'm feeling impressed to tell you coming thing. <br> Can you please give me a number between 1 and ${
+  gameText.innerHTML = `<h2>Thank you, kind traveler, for helping me collect ${gemCount} of my gems. <br> I'm feeling impressed to tell you of coming things. </h2> <br> <h3>Give her a number between 1 and ${
     returnedGemObjs.length
-  }.</h2>`;
+  }.</h3>`;
   formDiv.style.display = "flex";
   numberSubmitButton.addEventListener("click", firstSubmitEvent);
 };
@@ -226,7 +230,7 @@ const countDownTimer = () => {
     }
   }
   if (countDown > 0) {
-    createTimer.innerText = `Timer: ${countDown}`;
+    createTimer.innerHTML = `<h2>Timer: ${countDown}</h2>`;
   }
   countDown--;
 };
@@ -244,6 +248,7 @@ const pickUpItemEvent = item => {
     gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
       item.id
     } and lost a gem.</h2>`;
+    returnedGemObjs.pop();
     gemCount--;
     addGemCounter.innerText = `Gems: ${gemCount}`;
     document.querySelector(".picked").remove();
@@ -268,6 +273,7 @@ const placeItems = array => {
 const placeGems = identify => {
   const newEl = document.createElement("div");
   newEl.id = identify;
+  newEl.classList.add("gem");
   gems.appendChild(newEl);
   randomPosition(newEl);
 };
@@ -306,6 +312,7 @@ const sequenceTimer = () => {
 const goToPickUp = ev => {
   ev.preventDefault();
   setUpGround();
+  debugger;
   openingPage.style.display = "none";
   floor.style.display = "initial";
   document.querySelector(".ground").style.display = "initial";
@@ -318,62 +325,45 @@ const batsFlyThrough = () => {
   gameText.innerHTML = "<h2>What was THAT!</h2>";
   setTimeout(function() {
     document.querySelector(".bats").remove();
-    gameText.innerHTML = "<h2>Oh no! <br> Help me please!</h2>";
+    gameText.innerHTML = "<h2>Oh no! <br> Help me please!<br></h2>";
     const helpButton = document.createElement("button");
     helpButton.innerText = "Click Here to Help!";
     gameText.appendChild(helpButton);
     helpButton.addEventListener("click", goToPickUp);
-  }, 3000);
+  }, 1800);
 };
 
-const setLevel = ev => {
-  ev.preventDefault;
-  if (level === "hard") {
-    countDown = 20;
-    lowestScore = 24;
-    //document.querySelector("#submit-button").remove();
-    batsFlyThrough();
-  }
-  if (level === "normal") {
-    countDown = 20;
-    lowestScore = 20;
-    //document.querySelector("#submit-button").remove();
-    batsFlyThrough();
-  }
-  if (level === "easy" || level != true) {
-    countDown = 20;
-    lowestScore = 15;
-    //document.querySelector("#submit-button").remove();
-    batsFlyThrough();
-  }
-};
-
-const levelClickEvent = ev => {
-  ev.preventDefault;
-  level = document.querySelector("form").value;
-  debugger;
-  console.log(level);
-  batsFlyThrough();
-};
+const levelArr = [
+  { level: "easy", lowestScore: 15, text: "Never" },
+  { level: "normal", lowestScore: 20, text: "Once or twice" },
+  { level: "hard", lowestScore: 25, text: "Many times" }
+];
 
 const getTravelerLevel = () => {
   gameText.innerHTML =
-    '<h2>Tell me, have you traveled these woods before?</h2><form><input type="radio" name="level" value="hard"> <p>Yes, many times!</p> <br><input type="radio" name="level" value="normal"> <p>Only once or twice.</p> <br><input type="radio" name="level" value="easy"> <p>Never!</p><input type="submit"></form>';
-  let form2 = document.querySelector("form");
-  form2[3].removeEventListener();
-  form2[3].addEventListener("click", setLevel);
-  // createButton = document.createElement("button");
-  // createButton.id = "submit-button";
-  // createButton.innerHTML = "SUBMIT";
-  // createButton.addEventListener("click", levelClickEvent);
-  // gameText.appendChild(createButton);
+    "<h2>Tell me, have you traveled these woods before?</h2>";
+  levelArr.forEach(obj => {
+    createButton = document.createElement("button");
+    createButton.id = "level-button";
+    createButton.innerHTML = `${obj.text}`;
+    createButton.lowestScore = `${obj.lowestScore}`;
+    createButton.level = `${obj.level}`;
+    createButton.addEventListener("click", function(ev) {
+      ev.preventDefault;
+      level = ev.target.level;
+      lowestScore = ev.target.lowestScore;
+      batsFlyThrough();
+    });
+    gameText.appendChild(createButton);
+  });
 };
+
 const startGameSequence = () => {
   gypsy.style.display = "block";
   setTimeout(function() {
     gameText.style.display = "block";
     gameText.innerHTML = "<h2>Hello traveler. <br> We seem to be lost.</h2>";
-    setTimeout(batsFlyThrough, 3000);
+    setTimeout(getTravelerLevel, 3000);
   }, 3000);
 };
 

@@ -58,3 +58,9 @@ pickUpGemEvent(gemObjs[i].id);
 placeItems(foliageItems);
 };
 ```
+
+**INSIGHTS**
+
+This project uses a series of intervals and timeouts to progress through the game.
+
+I learned that separating your javascript into multiple, javascript files help to
