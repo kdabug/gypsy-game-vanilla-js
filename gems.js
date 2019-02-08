@@ -561,5 +561,3 @@ createGemObject(
   "white",
   "confidence and positive intent, talisman of pyschics"
 );
-
-console.log(gemObjs.length);

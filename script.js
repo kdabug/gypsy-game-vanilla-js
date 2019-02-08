@@ -312,7 +312,6 @@ const sequenceTimer = () => {
 const goToPickUp = ev => {
   ev.preventDefault();
   setUpGround();
-  debugger;
   openingPage.style.display = "none";
   floor.style.display = "initial";
   document.querySelector(".ground").style.display = "initial";
@@ -320,7 +319,6 @@ const goToPickUp = ev => {
 };
 
 const batsFlyThrough = () => {
-  console.log(level);
   document.querySelector(".bats").style.display = "block";
   gameText.innerHTML = "<h2>What was THAT!</h2>";
   setTimeout(function() {

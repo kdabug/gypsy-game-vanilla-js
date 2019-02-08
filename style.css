@@ -279,9 +279,9 @@ input {
     height: 10%;
     width: 15%;
   }
-  70% {
-    top: 20%;
-    left: 20%;
+  85% {
+    top: 15%;
+    left: 15%;
     height: 50%;
     width: 60%;
   }
@@ -346,12 +346,12 @@ input {
   font-family: "M PLUS 1p", sans-serif;
   color: white;
   position: fixed;
-  background: transparent;
+  background-color: rgba(50, 50, 50, 0.6);
   bottom: 0;
   right: 0;
   border: solid 2px black;
   height: 20vh;
-  width: 30vw;
+  width: 29.5vw;
   z-index: 2;
   display: block;
   text-align: center;
@@ -369,9 +369,10 @@ input {
   position: fixed;
   background-color: rgba(50, 50, 50, 0.6);
   bottom: 0;
+  left: 0;
   border: solid 2px black;
   height: 20vh;
-  width: 100vw;
+  width: 70vw;
   z-index: 0;
   display: block;
   text-align: center;
@@ -379,6 +380,7 @@ input {
 .instructions h1 {
   color: white;
   font-size: 20px;
+  padding: 10px 0;
   margin-block-start: 0em;
   margin-block-end: 0em;
 }
