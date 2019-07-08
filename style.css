@@ -339,6 +339,18 @@ input {
   height: 100px;
   position: absolute;
 }
+
+.granny-right {
+  background-image: url("./images/granny-right.gif");
+  background-size: cover;
+  height: 20px;
+}
+
+.granny-left {
+  background-image: url("./images/granny-left.gif");
+  background-size: cover;
+  height: 20px;
+}
 /* //GEMS SCENE */
 
 /* to note: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
@@ -491,6 +503,9 @@ input {
   transform: rotate(45deg);
   width: 20px;
   position: absolute;
+  transition: top 0.4s, left 0.4s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
 }
 
 #rose-quartz {
