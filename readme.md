@@ -1,5 +1,8 @@
 ## GYPSY
 
+
+a vanilla js, css, html, fortune-telling game. 
+
 **link:** https://gypsy-in-red.surge.sh
 
 **GAME DESCRIPTION**
