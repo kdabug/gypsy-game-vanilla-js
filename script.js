@@ -11,6 +11,9 @@ const formDiv = document.querySelector(".show-input");
 const form = document.querySelector("input");
 const gypsy = document.querySelector(".opening-gypsy");
 const gameText = document.querySelector(".hello");
+const gameWidth = window.innerWidth;
+const gameHeight = window.innerHeight;
+const bitGypsy = document.querySelector(".runner");
 
 //Starting Conditions
 let returnedGemObjs = [];
@@ -242,18 +245,18 @@ const randomPosition = item => {
 };
 
 //pickUpItem takes an id and add an event listener to picked up items
-const pickUpItemEvent = item => {
-  item.addEventListener("click", function() {
-    this.classList.add("picked");
-    gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
-      item.id
-    } and lost a gem.</h2>`;
-    returnedGemObjs.pop();
-    gemCount--;
-    addGemCounter.innerText = `Gems: ${gemCount}`;
-    document.querySelector(".picked").remove();
-  });
-};
+// const pickUpItemEvent = item => {
+//   item.addEventListener("click", function() {
+//     this.classList.add("picked");
+//     gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
+//       item.id
+//     } and lost a gem.</h2>`;
+//     returnedGemObjs.pop();
+//     gemCount--;
+//     addGemCounter.innerText = `Gems: ${gemCount}`;
+//     document.querySelector(".picked").remove();
+//   });
+// };
 //placeItems takes an array of objects and randomly places the number of items specified in each object
 //and adds an event listener
 const placeItems = identify => {
@@ -263,7 +266,7 @@ const placeItems = identify => {
     item.classList.add(identify.className);
     foliage.appendChild(item);
     randomPosition(item);
-    pickUpItemEvent(item);
+    //pickUpItemEvent(item);
   }
 };
 
@@ -278,37 +281,46 @@ const placeGems = identify => {
 
 //pickUpGemEvent takes an element and attaches an event listener
 //that adds to counter and removes the item when it is clicked
-const pickUpGemEvent = id => {
-  document.querySelector(`#${id}`).addEventListener("click", function() {
-    const gemName = this.getAttribute("id");
-    this.classList.add("picked");
-    for (let i = 0; i < gemObjs.length; i++) {
-      if (gemName === gemObjs[i].id) {
-        returnedGemObjs.push(gemObjs[i]);
-        gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
-        gemCount++;
-        addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
-      }
-    }
-    document.querySelector(".picked").remove();
-  });
-};
+// const pickUpGemEvent = id => {
+//   document.querySelector(`#${id}`).addEventListener("click", function() {
+//     const gemName = this.getAttribute("id");
+//     this.classList.add("picked");
+//     for (let i = 0; i < gemObjs.length; i++) {
+//       if (gemName === gemObjs[i].id) {
+//         returnedGemObjs.push(gemObjs[i]);
+//         gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
+//         gemCount++;
+//         addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
+//       }
+//     }
+//     document.querySelector(".picked").remove();
+//   });
+// };
 
 //RUN GAME //#endregionconst width = window.innerWidth;
-const height = window.innerHeight;
-const bitGypsy = { x: width / 2, y: height / 2 };
-
-const isCoordinateInGrid = function(x, y) {
-  if (x < 0 || y < 0 || x > width || y > height) {
-    return false;
-  }
-  return true;
+const sequenceTimer = () => {
+  setInterval(countDownTimer, 1000);
 };
 
-const isThereAnItemAt = function(x, y) {
-  // Loop through rocks, and check if any rock is at the given point.
-  for (let i = 0; i < foliageItems.length; i++) {
-    if (foliageItems[i].offsetLeft === x && foliageItems[i].offsetTop === y) {
+// const isCoordinateInGrid = (x, y) => {
+//   if (x < 0 || y < 0 || x > gameWidth || y > gameHeight) {
+//     return false;
+//   }
+//   return true;
+// };
+
+const hitAnItemAt = (x, y) => {
+  let itemsList = document.querySelectorAll(".foliage");
+  for (let i = 0; i < itemsList.length; i++) {
+    if (itemsList[i].offsetLeft === x && itemsList[i].offsetTop === y) {
+      this.classList.add("picked");
+      gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
+        item.id
+      } and lost a gem.</h2>`;
+      returnedGemObjs.pop();
+      gemCount--;
+      addGemCounter.innerText = `Gems: ${gemCount}`;
+      document.querySelector(".picked").remove();
       return true;
     }
   }
@@ -317,99 +329,127 @@ const isThereAnItemAt = function(x, y) {
 
 // Check if a player can move to the provided coordinates.
 // Returns a Boolean
-const canMoveTo = function(x, y) {
-  // If the coordinate to move is outside of the grid,
-  // the player can't move to it.
-  if (!isCoordinateInGrid(x, y)) {
-    return false;
-  }
-  // If there is a rock at the coordinate,
-  // the player can't move to it.
-  if (isThereAnItemAt(x, y)) {
-    return false;
-  }
-  return true;
-};
+// const canMoveTo = (x, y) => {
+//   console.log("checking canMoveTo");
+//   if (!isCoordinateInGrid(x, y)) {
+//     return false;
+//   }
+//   return true;
+// };
 
 // Check if there is a gem at the provided coordinates.
-// Returns a Boolean
-const isThereAGemAt = (x, y) => {
-  // Loop through gems, and check if any gem is at the given point.
-  for (let i = 0; i < gems.length; i++) {
-    if (gems[i].offsetLeft === x && gems[i].offsetTop === y) {
+// Adds to counter if hit a gem
+// Removes gem after picking it up
+const hitAGemAt = (a, b) => {
+  let gemsList = document.querySelectorAll(".gem");
+  console.log("bitGypsy, a, b", bitGypsy, a, b);
+  for (let i = 0; i < gemsList.length; i++) {
+    if (
+      gemsList[i].offsetLeft < a + 20 &&
+      gemsList[i].offsetLeft > a - 20 &&
+      gemsList[i].offsetTop < b + 20 &&
+      gemsList[i].offsetTop > b - 20
+    ) {
+      console.log("works for ", gemsList[i]);
+      const gemName = gemsList[i].id;
+      gemsList[i].classList.add("picked");
+      for (let i = 0; i < gemObjs.length; i++) {
+        if (gemName === gemObjs[i].id) {
+          returnedGemObjs.push(gemObjs[i]);
+          gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
+          gemCount++;
+          addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
+        }
+      }
+      document.querySelector(".picked").remove();
       return true;
     }
   }
   return false;
 };
 
-const removeGemAt = function(x, y) {
-  for (let i = 0; i < gems.length; i++) {
-    const gem = gems[i];
-    if (gem.offsetLeft === x && gem.offsetTop === y) {
-      gems.splice(i, 1);
-    }
+function moveCharacterTo(a, b) {
+  console.log("checking MOVECHARACTERTO");
+  bitGypsy.x = a;
+  bitGypsy.y = b;
+  bitGypsy.style.left = bitGypsy.x.toString() + "px";
+  bitGypsy.style.top = bitGypsy.y.toString() + "px";
+  if (hitAGemAt(a, b)) {
+    console.log(`gypsy hit a gem.`, this);
+    // const gemName = this.getAttribute("id");
+    // this.classList.add("picked");
+    // for (let i = 0; i < gemObjs.length; i++) {
+    //   if (gemName === gemObjs[i].id) {
+    //     returnedGemObjs.push(gemObjs[i]);
+    //     gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
+    //     gemCount++;
+    //     addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
+    //   }
+    // }
+    // document.querySelector(".picked").remove();
   }
-};
-
-function moveCharacterTo(x, y) {
-  const gypsyEl = document.querySelector(".runner");
-  gyspyEl.style.left = gypsy.x.toString() + "px";
-  gypsyEl.style.top = gypsy.y.toString() + "px";
-  if (isThereAnItemAt(x, y)) {
-    console.log(`gypsy hit an item.`);
+  if (hitAnItemAt(a, b)) {
+    console.log(`gypsy hit an item.`, this);
+    // this.classList.add("picked");
+    // gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
+    //   item.id
+    // } and lost a gem.</h2>`;
+    // returnedGemObjs.pop();
+    // gemCount--;
+    // addGemCounter.innerText = `Gems: ${gemCount}`;
+    // document.querySelector(".picked").remove();
   }
 }
 
 function moveUp() {
-  console.log("move up");
-  if (canMoveTo(gypsy.x, gypsy.y - 1)) {
-    gypsy.y -= 1;
-    moveCharacterTo(gypsy.x, gypsy.y);
-  }
+  console.log("move up", bitGypsy.y);
+  //if (canMoveTo(bitGypsy.x, bitGypsy.y - 10)) {
+  moveCharacterTo(bitGypsy.x, bitGypsy.y - 5);
+  //}
 }
 function moveDown() {
   console.log("move down");
-  if (canMoveTo(gypsy.x, gypsy.y + 1)) {
-    gypsy.y += 1;
-    moveCharacterTo(gypsy.x, gypsy.y);
-  }
+  //if (canMoveTo(bitGypsy.x, bitGypsy.y + 10)) {
+  moveCharacterTo(bitGypsy.x, bitGypsy.y + 5);
+  //}
 }
 function moveLeft() {
   console.log("move left");
-  if (canMoveTo(gypsy.x - 1, gypsy.y)) {
-    gypsy.x -= 1;
-    moveCharacterTo(gypsy.x, gypsy.y);
-  }
+  //if (canMoveTo(bitGypsy.x - 10, bitGypsy.y)) {
+  moveCharacterTo(bitGypsy.x - 5, bitGypsy.y);
+  //}
 }
 
 const moveRight = function() {
-  if (canMoveTo(gypsy.x + 1, gypsy.y)) {
-    gypsy.x += 1;
-    moveCharacterTo(gypsy.x, gypsy.y);
-  }
+  console.log("move right");
+  //if (canMoveTo(bitGypsy.x + 10, bitGypsy.y)) {
+  moveCharacterTo(bitGypsy.x + 5, bitGypsy.y);
+  //}
 };
 
 const runGame = () => {
+  bitGypsy.x = Math.round(gameWidth / 2);
+  bitGypsy.y = Math.round(gameHeight / 2);
+  console.log("rungame bitGypsy", bitGypsy);
   document.body.addEventListener("keydown", function(evt) {
     const keyCode = evt.keyCode;
     // If the user pressed any directional keys,
     // prevent the browser default of scrolling the page.
-    if ([37, 38, 39, 40].includes(keyCode)) {
+    if ([65, 87, 68, 83].includes(keyCode)) {
       evt.preventDefault();
     }
     // Attempt to move the character in the direction
     switch (keyCode) {
-      case 37:
+      case 65:
         moveLeft();
         break;
-      case 38:
+      case 87:
         moveUp();
         break;
-      case 39:
+      case 68:
         moveRight();
         break;
-      case 40:
+      case 83:
         moveDown();
         break;
     }
@@ -420,15 +460,11 @@ const runGame = () => {
 const setUpGround = () => {
   for (let i = 0; i < gemObjs.length; i++) {
     placeGems(gemObjs[i].id);
-    pickUpGemEvent(gemObjs[i].id);
+    //pickUpGemEvent(gemObjs[i].id);
   }
   for (let i = 0; i < foliageItems.length; i++) {
     placeItems(foliageItems[i]);
   }
-};
-
-const sequenceTimer = () => {
-  setInterval(countDownTimer, 1000);
 };
 
 const goToPickUp = ev => {
@@ -437,8 +473,9 @@ const goToPickUp = ev => {
   openingPage.style.display = "none";
   floor.style.display = "initial";
   document.querySelector(".ground").style.display = "initial";
+  document.querySelector(".runner").style.display = "initial";
   runGame();
-  //sequenceTimer();
+  sequenceTimer();
 };
 
 const batsFlyThrough = () => {

@@ -11,6 +11,7 @@ body {
   background-color: white;
   margin: 0px;
   padding: 0px;
+  overflow: hidden;
 }
 
 button {
@@ -339,19 +340,33 @@ input {
   height: 100px;
   position: absolute;
 }
-
-.granny-right {
+.runner {
   background-image: url("./images/granny-right.gif");
   background-size: cover;
-  height: 20px;
+  height: 60px;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+.runner.granny-right {
+  background-image: url("./images/granny-right.gif");
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+  position: absolute;
 }
 
-.granny-left {
+.runner.granny-left {
   background-image: url("./images/granny-left.gif");
   background-size: cover;
-  height: 20px;
+  height: 60px;
+  position: absolute;
 }
-/* //GEMS SCENE */
+/* GEMS SCENE */
 
 /* to note: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
 .timer {
@@ -405,7 +420,7 @@ input {
 
 /* THE GEMS */
 .gem {
-  /* box-shadow: 20px 20px 50px grey; */
+  box-shadow: 20px 20px 50px grey;
 }
 
 #rose-quartz,
