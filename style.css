@@ -295,6 +295,13 @@ input {
 }
 
 /* //FLOOR SCENE */
+.instructional-modal {
+  display: none;
+  background-color: rgba(128, 0, 128, 0.29);
+  color: white;
+  width: 100%;
+  height: 100%;
+}
 .floor-scene {
   background: white;
   z-index: -1;
@@ -341,6 +348,7 @@ input {
   position: absolute;
 }
 .runner {
+  display: none;
   background-image: url("./images/granny-right.gif");
   background-size: cover;
   height: 60px;
