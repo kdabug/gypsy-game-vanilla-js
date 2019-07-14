@@ -34,31 +34,30 @@ gems.appendChild(newEl);
 randomPosition(newEl);
 };
 
-//pickUpGemEvent takes an element and attaches an event listener
-//that adds to counter and removes the item when it is clicked
+//pickUpGemEvent takes an element and attaches an event listener that adds to counter and removes the item when it is clicked
 const pickUpGemEvent = id => {
-document.querySelector(`#${id}`).addEventListener("click", function() {
-const gemName = this.getAttribute("id");
-this.classList.add("picked");
-for (let i = 0; i < gemObjs.length; i++) {
-if (gemName === gemObjs[i].id) {
-returnedGemObjs.push(gemObjs[i]);
-gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
-gemCount++;
-addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
-}
-}
-document.querySelector(".picked").remove();
-});
+    document.querySelector(`#${id}`).addEventListener("click", function() {
+    const gemName = this.getAttribute("id");
+    this.classList.add("picked");
+    for (let i = 0; i < gemObjs.length; i++) {
+      if (gemName === gemObjs[i].id) {
+        returnedGemObjs.push(gemObjs[i]);
+        gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
+        gemCount++;
+        addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
+      }
+    }
+    document.querySelector(".picked").remove();
+  });
 };
 
 //helper functions for play game sequence
 const setUpGround = () => {
-for (let i = 0; i < gemObjs.length; i++) {
-placeGems(gemObjs[i].id);
-pickUpGemEvent(gemObjs[i].id);
-}
-placeItems(foliageItems);
+  for (let i = 0; i < gemObjs.length; i++) {
+    placeGems(gemObjs[i].id);
+    pickUpGemEvent(gemObjs[i].id);
+   }
+  placeItems(foliageItems);
 };
 ```
 
