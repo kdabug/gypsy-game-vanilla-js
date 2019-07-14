@@ -11,6 +11,7 @@ body {
   background-color: white;
   margin: 0px;
   padding: 0px;
+  overflow: hidden;
 }
 
 button {
@@ -294,6 +295,13 @@ input {
 }
 
 /* //FLOOR SCENE */
+.instructional-modal {
+  display: none;
+  background-color: rgba(128, 0, 128, 0.29);
+  color: white;
+  width: 100%;
+  height: 100%;
+}
 .floor-scene {
   background: white;
   z-index: -1;
@@ -339,7 +347,34 @@ input {
   height: 100px;
   position: absolute;
 }
-/* //GEMS SCENE */
+.runner {
+  display: none;
+  background-image: url("./images/granny-right.gif");
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 2;
+}
+.runner.granny-right {
+  background-image: url("./images/granny-right.gif");
+  background-size: cover;
+  height: 60px;
+  width: 60px;
+  position: absolute;
+}
+
+.runner.granny-left {
+  background-image: url("./images/granny-left.gif");
+  background-size: cover;
+  height: 60px;
+  position: absolute;
+}
+/* GEMS SCENE */
 
 /* to note: css shapes can be found at https://css-tricks.com/the-shapes-of-css/. */
 .timer {
@@ -393,7 +428,7 @@ input {
 
 /* THE GEMS */
 .gem {
-  /* box-shadow: 20px 20px 50px grey; */
+  box-shadow: 20px 20px 50px grey;
 }
 
 #rose-quartz,
@@ -491,6 +526,9 @@ input {
   transform: rotate(45deg);
   width: 20px;
   position: absolute;
+  transition: top 0.4s, left 0.4s;
+  transition-timing-function: linear;
+  background-repeat: no-repeat;
 }
 
 #rose-quartz {

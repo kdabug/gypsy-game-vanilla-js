@@ -11,6 +11,10 @@ const formDiv = document.querySelector(".show-input");
 const form = document.querySelector("input");
 const gypsy = document.querySelector(".opening-gypsy");
 const gameText = document.querySelector(".hello");
+const gameWidth = window.innerWidth;
+const gameHeight = window.innerHeight;
+const bitGypsy = document.querySelector(".runner");
+const instructionalModal = document.querySelector(".instructional-modal");
 
 //Starting Conditions
 let returnedGemObjs = [];
@@ -256,14 +260,14 @@ const pickUpItemEvent = item => {
 };
 //placeItems takes an array of objects and randomly places the number of items specified in each object
 //and adds an event listener
-const placeItems = array => {
-  for (let j = 0; j < foliageItems.length; j++) {
-    for (let i = 0; i <= foliageItems[j].number; i++) {
-      const item = document.createElement("img");
-      item.setAttribute("src", foliageItems[j].url);
-      item.classList.add(foliageItems[j].className);
-      foliage.appendChild(item);
-      randomPosition(item);
+const placeItems = (identify, method) => {
+  for (let i = 0; i < identify.number; i++) {
+    const item = document.createElement("img");
+    item.setAttribute("src", identify.url);
+    item.classList.add(identify.className);
+    foliage.appendChild(item);
+    randomPosition(item);
+    if (method === "mouse") {
       pickUpItemEvent(item);
     }
   }
@@ -278,8 +282,8 @@ const placeGems = identify => {
   randomPosition(newEl);
 };
 
-//pickUpGemEvent takes an element and attaches an event listener
-//that adds to counter and removes the item when it is clicked
+// pickUpGemEvent takes an element and attaches an event listener
+// that adds to counter and removes the item when it is clicked
 const pickUpGemEvent = id => {
   document.querySelector(`#${id}`).addEventListener("click", function() {
     const gemName = this.getAttribute("id");
@@ -296,27 +300,195 @@ const pickUpGemEvent = id => {
   });
 };
 
-//helper functions for play game sequence
-const setUpGround = () => {
-  for (let i = 0; i < gemObjs.length; i++) {
-    placeGems(gemObjs[i].id);
-    pickUpGemEvent(gemObjs[i].id);
+//RUN GAME
+
+// const isCoordinateInGrid = (x, y) => {
+//   if (x < 0 || y < 0 || x > gameWidth || y > gameHeight) {
+//     return false;
+//   }
+//   return true;
+// };
+
+const hitAnItemAt = (x, y) => {
+  let itemsList = document.querySelectorAll(".foliage");
+  for (let i = 0; i < itemsList.length; i++) {
+    if (itemsList[i].offsetLeft === x && itemsList[i].offsetTop === y) {
+      this.classList.add("picked");
+      gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
+        item.id
+      } and lost a gem.</h2>`;
+      returnedGemObjs.pop();
+      gemCount--;
+      addGemCounter.innerText = `Gems: ${gemCount}`;
+      document.querySelector(".picked").remove();
+      return true;
+    }
   }
-  placeItems(foliageItems);
+  return false;
 };
 
-const sequenceTimer = () => {
+// Check if a player can move to the provided coordinates.
+// Returns a Boolean
+// const canMoveTo = (x, y) => {
+//   console.log("checking canMoveTo");
+//   if (!isCoordinateInGrid(x, y)) {
+//     return false;
+//   }
+//   return true;
+// };
+
+// Check if there is a gem at the provided coordinates.
+// Adds to counter if hit a gem
+// Removes gem after picking it up
+const hitAGemAt = (a, b) => {
+  let gemsList = document.querySelectorAll(".gem");
+  console.log("bitGypsy, a, b", bitGypsy, a, b);
+  for (let i = 0; i < gemsList.length; i++) {
+    if (
+      gemsList[i].offsetLeft < a + 20 &&
+      gemsList[i].offsetLeft > a - 20 &&
+      gemsList[i].offsetTop < b + 20 &&
+      gemsList[i].offsetTop > b - 20
+    ) {
+      console.log("works for ", gemsList[i]);
+      const gemName = gemsList[i].id;
+      gemsList[i].classList.add("picked");
+      for (let i = 0; i < gemObjs.length; i++) {
+        if (gemName === gemObjs[i].id) {
+          returnedGemObjs.push(gemObjs[i]);
+          gemNameText.innerHTML = `<h2>You've picked up the ${gemName}.<h2>`;
+          gemCount++;
+          addGemCounter.innerHTML = `<h2>Gems: ${gemCount}</h2>`;
+        }
+      }
+      document.querySelector(".picked").remove();
+      return true;
+    }
+  }
+  return false;
+};
+
+function moveCharacterTo(a, b) {
+  console.log("checking MOVECHARACTERTO");
+  bitGypsy.x = a;
+  bitGypsy.y = b;
+  bitGypsy.style.left = bitGypsy.x.toString() + "px";
+  bitGypsy.style.top = bitGypsy.y.toString() + "px";
+  if (hitAGemAt(a, b)) {
+    console.log(`gypsy hit a gem.`, this);
+  }
+  if (hitAnItemAt(a, b)) {
+    console.log(`gypsy hit an item.`, this);
+  }
+}
+
+function moveUp() {
+  console.log("move up", bitGypsy.y);
+  //if (canMoveTo(bitGypsy.x, bitGypsy.y - 10)) {
+  moveCharacterTo(bitGypsy.x, bitGypsy.y - 5);
+  //}
+}
+function moveDown() {
+  console.log("move down");
+  //if (canMoveTo(bitGypsy.x, bitGypsy.y + 10)) {
+  moveCharacterTo(bitGypsy.x, bitGypsy.y + 5);
+  //}
+}
+function moveLeft() {
+  console.log("move left");
+  //if (canMoveTo(bitGypsy.x - 10, bitGypsy.y)) {
+  moveCharacterTo(bitGypsy.x - 5, bitGypsy.y);
+  //}
+}
+
+const moveRight = function() {
+  console.log("move right");
+  //if (canMoveTo(bitGypsy.x + 10, bitGypsy.y)) {
+  moveCharacterTo(bitGypsy.x + 5, bitGypsy.y);
+  //}
+};
+
+const runGame = () => {
+  document.querySelector(".runner").style.display = "initial";
+  bitGypsy.x = Math.round(gameWidth / 2);
+  bitGypsy.y = Math.round(gameHeight / 2);
+  console.log("rungame bitGypsy", bitGypsy);
+  document.body.addEventListener("keydown", function(evt) {
+    const keyCode = evt.keyCode;
+    // If the user pressed any directional keys,
+    // prevent the browser default of scrolling the page.
+    if ([65, 87, 68, 83].includes(keyCode)) {
+      evt.preventDefault();
+    }
+    // Attempt to move the character in the direction
+    switch (keyCode) {
+      case 65:
+        moveLeft();
+        break;
+      case 87:
+        moveUp();
+        break;
+      case 68:
+        moveRight();
+        break;
+      case 83:
+        moveDown();
+        break;
+    }
+  });
+};
+
+//helper functions for play game sequence
+const sequenceTimer = method => {
   setInterval(countDownTimer, 1000);
 };
 
-const goToPickUp = ev => {
+const setUpGround = method => {
+  for (let i = 0; i < gemObjs.length; i++) {
+    placeGems(gemObjs[i].id);
+    if (method === "mouse") {
+      pickUpGemEvent(gemObjs[i].id);
+    }
+  }
+  for (let i = 0; i < foliageItems.length; i++) {
+    placeItems(foliageItems[i], method);
+  }
+};
+
+const goToPhysicalPickUp = ev => {
   ev.preventDefault();
-  setUpGround();
   openingPage.style.display = "none";
   floor.style.display = "initial";
   document.querySelector(".ground").style.display = "initial";
-  sequenceTimer();
+  document.querySelector(".instructional-modal").style.display = "initial";
+  document.querySelector(".instructional-modal").innerHTML =
+    "<h2>Use your mouse and click on the gems to pop them back into the woman's basket.</h2>";
+  setTimeout(function() {
+    setUpGround("mouse");
+    sequenceTimer();
+    document.querySelector(".instructional-modal").style.display = "none";
+  }, 4000);
 };
+const goToMoralPickUp = ev => {
+  ev.preventDefault();
+  openingPage.style.display = "none";
+  floor.style.display = "initial";
+  document.querySelector(".ground").style.display = "initial";
+  document.querySelector(".instructional-modal").style.display = "initial";
+  document.querySelector(".instructional-modal").innerHTML =
+    "<h2>Use the 'w', 'a', 's', and 'd' keys to move the woman around and motivate her to collect her gems at a magical speed</h2>";
+  setTimeout(function() {
+    setUpGround("keys");
+    runGame();
+    document.querySelector(".instructional-modal").style.display = "none";
+    sequenceTimer();
+  }, 4000);
+};
+
+const helperButton = [
+  { type: "mouse", text: "Give her physical strength" },
+  { type: "keys", text: "Give her moral support" }
+];
 
 const batsFlyThrough = () => {
   document.querySelector(".bats").style.display = "block";
@@ -324,10 +496,17 @@ const batsFlyThrough = () => {
   setTimeout(function() {
     document.querySelector(".bats").remove();
     gameText.innerHTML = "<h2>Oh no! <br> Help me please!<br></h2>";
-    const helpButton = document.createElement("button");
-    helpButton.innerText = "Click Here to Help!";
-    gameText.appendChild(helpButton);
-    helpButton.addEventListener("click", goToPickUp);
+    helperButton.forEach(method => {
+      const helpButton = document.createElement("button");
+      helpButton.innerText = `${method.text}`;
+      gameText.appendChild(helpButton);
+      if (method.type === "mouse") {
+        helpButton.addEventListener("click", goToPhysicalPickUp);
+      }
+      if (method.type === "keys") {
+        helpButton.addEventListener("click", goToMoralPickUp);
+      }
+    });
   }, 1800);
 };
 
