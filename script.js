@@ -211,11 +211,14 @@ const firstNumberInput = () => {
 const winningPicks = () => {
   floor.style.display = "none";
   openingPage.style.display = "";
-  gameText.innerHTML = `<h2>Thank you, kind traveler, for helping me collect ${gemCount} of my gems. <br> I'm feeling impressed to tell you of coming things. </h2> <br> <h3>Give her a number between 1 and ${
-    returnedGemObjs.length
-  }.</h3>`;
-  formDiv.style.display = "flex";
-  numberSubmitButton.addEventListener("click", firstSubmitEvent);
+  gameText.innerHTML = `<h2>Thank you, kind traveler, for helping me collect ${gemCount} of my precious gems....<br><br> WAIT!`;
+  setTimeout(function() {
+    gameText.innerHTML = `<h2>I feel impressed to tell you of coming events </h2> <br> <h3>Give her a number between 1 and ${
+      returnedGemObjs.length
+    }.</h3>`;
+    formDiv.style.display = "flex";
+    numberSubmitButton.addEventListener("click", firstSubmitEvent);
+  }, 4000);
 };
 
 // countDownTimer takes countDown and starts a countdown timer
@@ -538,7 +541,7 @@ const getTravelerLevel = () => {
 const startGameSequence = () => {
   gypsy.style.display = "block";
   setTimeout(function() {
-    gameText.style.display = "block";
+    gameText.style.display = "flex";
     gameText.innerHTML = "<h2>Hello traveler. <br> We seem to be lost.</h2>";
     setTimeout(getTravelerLevel, 3000);
   }, 3000);
