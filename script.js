@@ -305,21 +305,25 @@ const pickUpGemEvent = id => {
 
 //RUN GAME
 
-// const isCoordinateInGrid = (x, y) => {
-//   if (x < 0 || y < 0 || x > gameWidth || y > gameHeight) {
-//     return false;
-//   }
-//   return true;
-// };
+const isCoordinateInGrid = (x, y) => {
+  if (x < 0 || y < 0 || x > gameWidth || y > gameHeight) {
+    return false;
+  }
+  return true;
+};
 
-const hitAnItemAt = (x, y) => {
-  let itemsList = document.querySelectorAll(".foliage");
+const hitAnItemAt = (a, b) => {
+  let itemsList = document.querySelector(".foliage").childNodes;
+  //console.log("foliage", itemsList, a, b);
   for (let i = 0; i < itemsList.length; i++) {
-    if (itemsList[i].offsetLeft === x && itemsList[i].offsetTop === y) {
-      this.classList.add("picked");
-      gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
-        item.id
-      } and lost a gem.</h2>`;
+    let top = parseInt(itemsList[i].style.top);
+    let left = parseInt(itemsList[i].style.left);
+    console.log("left, top", left, top);
+    if (left < a + 20 && left > a - 20 && top < b + 20 && top > b - 20) {
+      console.log("works for ", itemsList[i]);
+      const itemName = itemsList[i].class;
+      itemsList[i].classList.add("picked");
+      gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${itemName} and lost a gem.</h2>`;
       returnedGemObjs.pop();
       gemCount--;
       addGemCounter.innerText = `Gems: ${gemCount}`;
@@ -332,13 +336,13 @@ const hitAnItemAt = (x, y) => {
 
 // Check if a player can move to the provided coordinates.
 // Returns a Boolean
-// const canMoveTo = (x, y) => {
-//   console.log("checking canMoveTo");
-//   if (!isCoordinateInGrid(x, y)) {
-//     return false;
-//   }
-//   return true;
-// };
+const canMoveTo = (x, y) => {
+  console.log("checking canMoveTo");
+  if (!isCoordinateInGrid(x, y)) {
+    return false;
+  }
+  return true;
+};
 
 // Check if there is a gem at the provided coordinates.
 // Adds to counter if hit a gem
@@ -387,28 +391,28 @@ function moveCharacterTo(a, b) {
 
 function moveUp() {
   console.log("move up", bitGypsy.y);
-  //if (canMoveTo(bitGypsy.x, bitGypsy.y - 10)) {
-  moveCharacterTo(bitGypsy.x, bitGypsy.y - 5);
-  //}
+  if (canMoveTo(bitGypsy.x, bitGypsy.y - 5)) {
+    moveCharacterTo(bitGypsy.x, bitGypsy.y - 5);
+  }
 }
 function moveDown() {
   console.log("move down");
-  //if (canMoveTo(bitGypsy.x, bitGypsy.y + 10)) {
-  moveCharacterTo(bitGypsy.x, bitGypsy.y + 5);
-  //}
+  if (canMoveTo(bitGypsy.x, bitGypsy.y + 5)) {
+    moveCharacterTo(bitGypsy.x, bitGypsy.y + 5);
+  }
 }
 function moveLeft() {
   console.log("move left");
-  //if (canMoveTo(bitGypsy.x - 10, bitGypsy.y)) {
-  moveCharacterTo(bitGypsy.x - 5, bitGypsy.y);
-  //}
+  if (canMoveTo(bitGypsy.x - 5, bitGypsy.y)) {
+    moveCharacterTo(bitGypsy.x - 5, bitGypsy.y);
+  }
 }
 
 const moveRight = function() {
   console.log("move right");
-  //if (canMoveTo(bitGypsy.x + 10, bitGypsy.y)) {
-  moveCharacterTo(bitGypsy.x + 5, bitGypsy.y);
-  //}
+  if (canMoveTo(bitGypsy.x + 5, bitGypsy.y)) {
+    moveCharacterTo(bitGypsy.x + 5, bitGypsy.y);
+  }
 };
 
 const runGame = () => {
