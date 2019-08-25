@@ -1,5 +1,3 @@
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
-
 let gemObjs = [];
 
 const createGemObject = (stone, id, color, heals) => {
@@ -563,18 +561,3 @@ createGemObject(
   "white",
   "confidence and positive intent, talisman of pyschics"
 );
-
-arrA = ["ham", "cheese"];
-arrB = ["ham", "cheese"];
-
-const check = function(arr1, arr2) {
-  let equal = true;
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      equal = false;
-    }
-  }
-  return equal;
-};
-
-console.log(check(arrA, arrB));
