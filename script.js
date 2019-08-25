@@ -467,9 +467,9 @@ const goToPhysicalPickUp = ev => {
   openingPage.style.display = "none";
   floor.style.display = "initial";
   document.querySelector(".ground").style.display = "initial";
-  document.querySelector(".instructional-modal").style.display = "initial";
+  document.querySelector(".instructional-modal").style.display = "flex";
   document.querySelector(".instructional-modal").innerHTML =
-    "<h2>Use your mouse and click on the gems to pop them back into the woman's basket.</h2>";
+    "<h2>Use your mouse and click on the gems to pop them back into the woman's basket.</h2><p>Be careful to avoid rocks and leaves, as the woman will get angry and throw out a previously collected gem.</p>";
   setTimeout(function() {
     setUpGround("mouse");
     sequenceTimer();
@@ -481,9 +481,9 @@ const goToMoralPickUp = ev => {
   openingPage.style.display = "none";
   floor.style.display = "initial";
   document.querySelector(".ground").style.display = "initial";
-  document.querySelector(".instructional-modal").style.display = "initial";
+  document.querySelector(".instructional-modal").style.display = "flex";
   document.querySelector(".instructional-modal").innerHTML =
-    "<h2>Use the 'w', 'a', 's', and 'd' keys to move the woman around and motivate her to collect her gems at a magical speed</h2>";
+    "<h2>Use the 'w', 'a', 's', and 'd' keys to move the woman around and motivate her to collect her gems at a magical speed</h2><p>Be careful to avoid rocks and leaves, as the woman will get angry and throw out a previously collected gem.</p>";
   setTimeout(function() {
     setUpGround("keys");
     runGame();

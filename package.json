@@ -1,0 +1,29 @@
+{
+  "name": "gypsy-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cards.js",
+  "dependencies": {},
+  "devDependencies": {
+    "surge": "latest",
+    "git-scripts": "latest"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./public --domain gypsy-in-red.surge.sh"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdabug/GA-project1-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdabug/GA-project1-game/issues"
+  },
+  "homepage": "https://github.com/kdabug/GA-project1-game#readme"
+}
