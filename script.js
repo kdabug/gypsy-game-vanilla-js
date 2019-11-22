@@ -75,9 +75,7 @@ const gypsyTurnsRed = () => {
 //helper function for winningPicks
 //to ask the player to choose again
 const chooseAgain = () => {
-  gameText.innerHTML = `<p>Please pick a number between 1 and ${
-    returnedGemObjs.length
-  }</p>`;
+  gameText.innerHTML = `<p>Please pick a number between 1 and ${returnedGemObjs.length}</p>`;
 };
 
 //helper function for winningPicks
@@ -169,9 +167,7 @@ const secondNumberInput = () => {
     secondPickedNumber = pickedNumber;
     numberSubmitButton.removeEventListener("click", secondSubmitEvent);
     setTimeout(function() {
-      gameText.innerHTML = `<h2>Now for your future...</h2><br> <h3>Give her a different number between 1 and ${
-        returnedGemObjs.length
-      }.</h3>`;
+      gameText.innerHTML = `<h2>Now for your future...</h2><br> <h3>Give her a different number between 1 and ${returnedGemObjs.length}.</h3>`;
       numberSubmitButton.addEventListener("click", finalSubmitEvent);
     }, 8000);
   } else {
@@ -198,9 +194,7 @@ const firstNumberInput = () => {
     firstPickedNumber = pickedNumber;
     numberSubmitButton.removeEventListener("click", firstSubmitEvent);
     setTimeout(function() {
-      gameText.innerHTML = `<h2>I'm sensing your present state ...</h2><br><h3>Give her a different number between 1 and ${
-        returnedGemObjs.length
-      }.</h3>`;
+      gameText.innerHTML = `<h2>I'm sensing your present state ...</h2><br><h3>Give her a different number between 1 and ${returnedGemObjs.length}.</h3>`;
       numberSubmitButton.addEventListener("click", secondSubmitEvent);
     }, 8000);
   }
@@ -213,9 +207,7 @@ const winningPicks = () => {
   openingPage.style.display = "";
   gameText.innerHTML = `<h2>Thank you, kind traveler, for helping me collect ${gemCount} of my precious gems....<br><br> WAIT!`;
   setTimeout(function() {
-    gameText.innerHTML = `<h2>I feel impressed to tell you of coming events </h2> <br> <h3>Give her a number between 1 and ${
-      returnedGemObjs.length
-    }.</h3>`;
+    gameText.innerHTML = `<h2>I feel impressed to tell you of coming events </h2> <br> <h3>Give her a number between 1 and ${returnedGemObjs.length}.</h3>`;
     formDiv.style.display = "flex";
     numberSubmitButton.addEventListener("click", firstSubmitEvent);
   }, 4000);
@@ -252,9 +244,7 @@ const randomPosition = item => {
 const pickUpItemEvent = item => {
   item.addEventListener("click", function() {
     this.classList.add("picked");
-    gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${
-      item.id
-    } and lost a gem.</h2>`;
+    gemNameText.innerHTML = `<h2>Oh no! You've picked up a ${item.id} and lost a gem.</h2>`;
     returnedGemObjs.pop();
     gemCount--;
     addGemCounter.innerText = `Gems: ${gemCount}`;
